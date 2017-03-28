@@ -1,4 +1,4 @@
-package material.com.news.bean;
+package material.com.news.holder;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
