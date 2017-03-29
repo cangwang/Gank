@@ -9,20 +9,22 @@ import java.util.List;
  * Created by zjl on 16/7/6.
  */
 public class PageConfig {
-    public static List<String> pageTitles = new ArrayList<String>();
+    private static List<String> pageTitles = new ArrayList<String>();
 
-    public static List<String> getPageTitles(Context context) {
+    public static List<String> getPageTitles() {
         pageTitles.clear();
-        pageTitles.add("New");
-        pageTitles.add("New2");
+        pageTitles.add("all");
+        pageTitles.add("Android");
+        pageTitles.add("iOS");
+        pageTitles.add("福利");
         return pageTitles;
     }
 
     private static final String NewFragment = "material.com.news.ui.NewFragment";
 
-    private static final String FragmentB = "com.cangwang.b.FragmentB";
-
     public static String[] fragmentNames = {
+            NewFragment,
+            NewFragment,
             NewFragment,
             NewFragment
     };

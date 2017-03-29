@@ -1,5 +1,9 @@
 package material.com.news.model;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+
 /**
  * Created by zjl on 2017/3/28.
  */
@@ -15,14 +19,10 @@ public class NewsItem {
     public String url;
     public boolean used;
     public String who;
-    public String title;
-    public String subTitle;
-    public String anchor;
-    public String imgUrl;
 
     public NewsItem(String _id, String createdAt, String desc, String[] images
             , String publishedAt, String source, String type, String url
-            , boolean used, String who, String title, String subTitle, String anchor, String imgUrl) {
+            , boolean used, String who) {
         this._id = _id;
         this.createdAt = createdAt;
         this.desc = desc;
@@ -33,10 +33,6 @@ public class NewsItem {
         this.url = url;
         this.used = used;
         this.who = who;
-        this.title = title;
-        this.subTitle = subTitle;
-        this.anchor = anchor;
-        this.imgUrl = imgUrl;
     }
 
     public String get_id() {
@@ -119,35 +115,7 @@ public class NewsItem {
         this.who = who;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getAnchor() {
-        return anchor;
-    }
-
-    public void setAnchor(String anchor) {
-        this.anchor = anchor;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void clickToWeb(View view){
+        view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 }

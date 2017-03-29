@@ -1,13 +1,13 @@
 package material.com.news.ui;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import material.com.news.BR;
@@ -21,7 +21,7 @@ import material.com.news.model.NewsItem;
  */
 public class NewsReclyerAdapter extends RecyclerView.Adapter<NewsHolder>{
 
-    private List<NewsItem> datas;
+    private List<NewsItem> datas = new ArrayList<>();
     private Context context;
 
     public NewsReclyerAdapter(Context context){

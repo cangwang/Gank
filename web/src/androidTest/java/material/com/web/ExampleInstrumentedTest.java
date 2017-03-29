@@ -1,4 +1,4 @@
-package material.com.base;
+package material.com.web;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("material.com.base.test", appContext.getPackageName());
+        assertEquals("material.com.web.test", appContext.getPackageName());
     }
 }

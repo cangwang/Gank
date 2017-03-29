@@ -1,4 +1,4 @@
-package material.com.base;
+package material.com.web;
 
 import org.junit.Test;
 

@@ -23,22 +23,27 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.gank_tab);
         mViewPager =(ViewPager) findViewById(R.id.gank_view_pager);
-        pageTitles = PageConfig.getPageTitles(this);
+        pageTitles = PageConfig.getPageTitles();
         try{
-            for(String address:PageConfig.fragmentNames){
+//            for(String address:PageConfig.fragmentNames){
+            for (int i=0;i<PageConfig.fragmentNames.length;i++){
+                String address = PageConfig.fragmentNames[i];
                 //反射获得Class
                 Class clazz = Class.forName(address);
                 //创建类
                 Fragment tab = (Fragment) clazz.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("sort",PageConfig.getPageTitles().get(i));
+                tab.setArguments(bundle);
                 //添加到viewPagerAdapter的资源
                 pageFagments.add(tab);
             }
         }catch (ClassNotFoundException e){
-
+            e.printStackTrace();
         }catch (IllegalAccessException e){
-
+            e.printStackTrace();
         }catch (InstantiationException e){
-
+            e.printStackTrace();
         }
 
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
