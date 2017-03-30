@@ -47,6 +47,8 @@ public class NewFragment extends BaseFragment{
 
     private ProgressDialog pd;
 
+    private String sort;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class NewFragment extends BaseFragment{
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        String sort = bundle.getString("sort");
+        sort = bundle.getString("sort");
         Log.d(TAG,"sort = "+sort);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
@@ -68,7 +70,11 @@ public class NewFragment extends BaseFragment{
         mRecyclerView.setAdapter(adapter);
 
         pd = new ProgressDialog(getActivity());
+        loadData();
+    }
 
+    @Override
+    public void loadData() {
         retrofit =  CommonRetrofit.getInstance().getRetrofit();
         NewsService newsService = retrofit.create(NewsService.class);
         Observable<NewsEntity> observable = newsService.getNews(sort,1);
@@ -77,7 +83,8 @@ public class NewFragment extends BaseFragment{
                 .subscribe(new Observer<NewsEntity>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        pd.show();
+                        if (pd !=null)
+                            pd.show();
                     }
 
                     @Override
@@ -97,11 +104,6 @@ public class NewFragment extends BaseFragment{
                         if (pd != null && pd.isShowing())
                             pd.dismiss();
                     }
-        });
-
+                });
     }
-
-
-
-
 }

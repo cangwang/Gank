@@ -1,6 +1,4 @@
-package material.com.gank;
-
-import android.content.Context;
+package material.com.news.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,6 @@ public class PageConfig {
     }
 
     private static final String NewFragment = "material.com.news.ui.NewFragment";
-    public static final String AllNewsFragment = "material.com.news.ui.AllNewsFragment";
 
     public static String[] fragmentNames = {
             NewFragment,

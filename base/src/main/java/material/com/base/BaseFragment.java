@@ -6,5 +6,17 @@ import android.support.v4.app.Fragment;
  * Created by zjl on 2017/3/27.
  */
 
-public class BaseFragment extends Fragment{
+public abstract class BaseFragment extends Fragment{
+    private boolean HasLoadedOnce = false;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+//        if (!HasLoadedOnce){
+//            loadData();
+//            HasLoadedOnce=true;
+//        }
+    }
+
+    public abstract void loadData();
 }

@@ -7,17 +7,8 @@
     android:layout_height="match_parent"
     tools:context="material.com.gank.MainActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/gank_tab"
+    <FrameLayout
+        android:id="@+id/gank_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabSelectedTextColor="@android:color/holo_red_light"
-        android:background="@android:color/holo_green_light"
-        />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/gank_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/gank_tab"/>
+        android:layout_height="match_parent"/>
 </RelativeLayout>
