@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="material.com.gank.material.com.top.MainActivity">
+    tools:context="material.com.top.MainActivity">
 
     <FrameLayout
         android:id="@+id/gank_frame"

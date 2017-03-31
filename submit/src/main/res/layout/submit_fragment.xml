@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/submit_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recyclerview"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="36dp"
+        android:layout_gravity="center_vertical|start"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp"
+        android:hint="请输入你提交的干货地址">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/submit_url_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:textSize="15sp"/>
+    </android.support.design.widget.TextInputLayout>
 </RelativeLayout>

@@ -2,8 +2,11 @@ package material.com.news.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,10 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import material.com.base.BaseFragment;
+import material.com.base.event.SubmitStartEvent;
 import material.com.news.R;
 
 /**
@@ -28,6 +34,7 @@ public class AllNewsFragment extends BaseFragment{
     private List<Fragment> pageFagments = new ArrayList<Fragment>();
     private List<String> pageTitles = new ArrayList<String>();
     private TabLayout tabLayout;
+    private FloatingActionButton addNewBtn;
 
     private View view;
 
@@ -95,6 +102,13 @@ public class AllNewsFragment extends BaseFragment{
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        addNewBtn = (FloatingActionButton)view.findViewById(R.id.news_add_float_btn);
+        addNewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new SubmitStartEvent());
             }
         });
     }

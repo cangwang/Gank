@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cangwang.submit.R;
 import com.cangwang.submit.prestenter.SubmitPresenter;
 
 import material.com.base.BaseFragment;
@@ -21,7 +22,7 @@ public class SubmitFragment extends BaseFragment implements SubmitContact.View{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.submit_fragment,container,false);
     }
 
     @Override

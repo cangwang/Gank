@@ -35,4 +35,16 @@
         android:layout_height="match_parent"
         android:layout_below="@id/news_gank_tab"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/news_add_float_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:src="@android:drawable/ic_input_add"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
+        android:paddingBottom="20dp"
+        android:paddingRight="20dp"
+        android:layout_margin="@dimen/fab_margin"
+        app:pressedTranslationZ="12dp"/>
 </android.support.design.widget.CoordinatorLayout>

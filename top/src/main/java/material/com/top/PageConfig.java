@@ -11,19 +11,18 @@ public class PageConfig {
 
     public static List<String> getPageTitles() {
         pageTitles.clear();
-        pageTitles.add("all");
-        pageTitles.add("Android");
-        pageTitles.add("iOS");
-        pageTitles.add("福利");
+        pageTitles.add("首页");
+        pageTitles.add("提交干货");
         return pageTitles;
     }
 
     private static final String NewFragment = "material.com.news.ui.NewFragment";
     public static final String AllNewsFragment = "material.com.news.ui.AllNewsFragment";
+    public static final String SubmitFragment = "com.cangwang.submit.ui.SubmitFragment";
 
     public static String[] fragmentNames = {
-            NewFragment,
-            NewFragment,
+            AllNewsFragment,
+            SubmitFragment,
             NewFragment,
             NewFragment
     };
