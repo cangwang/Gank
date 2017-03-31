@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+import android.view.View;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
@@ -45,6 +46,10 @@ public class ImageLoader {
 
     @BindingAdapter(value = {"imageurl","holderDrawable","errorDrawable"},requireAll = false)
     public static void loadImge(ImageView imageView, String url, Drawable holderDrawable, Drawable errorDrawable){
+        if (url==null||url.equals("")){
+            imageView.setVisibility(View.GONE);
+            return;
+        }
         Glide.with(imageView.getContext())
                 .load(url)
                 .placeholder(holderDrawable)

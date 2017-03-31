@@ -13,14 +13,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
+        android:onClick="@{news.clickToWeb}"
         >
         <ImageView
             android:id="@+id/news_recyle_img"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:clickable="true"
-            android:onClick="@{()->handler.clickToWeb(news.url)}"
             app:imageurl="@{news.images[0]}"
             app:holderDrawable="@{@drawable/ic_launcher}"
             app:errorDrawable="@{@drawable/ic_launcher}"/>
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@{news.who}"/>
+            android:text="@{news.desc}"/>
         <TextView
             android:id="@+id/news_recyle_sub_title"
             android:layout_width="wrap_content"
@@ -38,13 +38,13 @@
             android:layout_toRightOf="@+id/news_recyle_img"
             android:layout_below="@+id/news_recyle_title"
             android:textSize="20sp"
-            android:text="@{news.createdAt}"/>
-        <Button
-            android:id="@+id/news_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/news_recyle_sub_title"
-            android:layout_toRightOf="@+id/news_recyle_img"
-            android:onClick="@{()->handler.clickToWeb(news.url)}"/>
+            android:text="@{news.who}"/>
+        <!--<Button-->
+            <!--android:id="@+id/news_btn"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/news_recyle_sub_title"-->
+            <!--android:layout_toRightOf="@+id/news_recyle_img"-->
+            <!--android:onClick="@{()->handler.clickToWeb(news.url)}"/>-->
     </RelativeLayout>
 </layout>

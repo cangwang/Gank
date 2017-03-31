@@ -117,5 +117,9 @@ public class NewsItem {
 
     public void clickToWeb(View view){
         view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        Intent intent = new Intent("material.com.web.Web");
+        intent.putExtra("url",url);
+        intent.putExtra("title",desc);
+        view.getContext().startActivity(intent);
     }
 }
