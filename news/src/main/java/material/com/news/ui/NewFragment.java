@@ -70,7 +70,7 @@ public class NewFragment extends BaseFragment{
         mRecyclerView.setAdapter(adapter);
 
         pd = new ProgressDialog(getActivity());
-        loadData();
+//        loadData();
     }
 
     @Override

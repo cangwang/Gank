@@ -43,26 +43,33 @@ public class AllNewsFragment extends BaseFragment{
         tabLayout = (TabLayout) view.findViewById(R.id.news_gank_tab);
         mViewPager =(ViewPager) view.findViewById(R.id.news_gank_view_pager);
         pageTitles = PageConfig.getPageTitles();
-        try{
-//            for(String address:PageConfig.fragmentNames){
-            for (int i=0;i<PageConfig.fragmentNames.length;i++){
-                String address = PageConfig.fragmentNames[i];
-                //反射获得Class
-                Class clazz = Class.forName(address);
-                //创建类
-                Fragment tab = (Fragment) clazz.newInstance();
-                Bundle bundle = new Bundle();
-                bundle.putString("sort",PageConfig.getPageTitles().get(i));
-                tab.setArguments(bundle);
-                //添加到viewPagerAdapter的资源
-                pageFagments.add(tab);
-            }
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }catch (IllegalAccessException e){
-            e.printStackTrace();
-        }catch (java.lang.InstantiationException e){
-            e.printStackTrace();
+//        try{
+//            for (int i=0;i<PageConfig.fragmentNames.length;i++){
+//                String address = PageConfig.fragmentNames[i];
+//                //反射获得Class
+//                Class clazz = Class.forName(address);
+//                //创建类
+//                Fragment tab = (Fragment) clazz.newInstance();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("sort",PageConfig.getPageTitles().get(i));
+//                tab.setArguments(bundle);
+//                //添加到viewPagerAdapter的资源
+//                pageFagments.add(tab);
+//            }
+//        }catch (ClassNotFoundException e){
+//            e.printStackTrace();
+//        }catch (IllegalAccessException e){
+//            e.printStackTrace();
+//        }catch (java.lang.InstantiationException e){
+//            e.printStackTrace();
+//        }
+
+        for(int i=0;i<PageConfig.fragmentNames.length;i++){
+            Fragment tab = new NewFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("sort",PageConfig.getPageTitles().get(i));
+            tab.setArguments(bundle);
+            pageFagments.add(tab);
         }
 
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);

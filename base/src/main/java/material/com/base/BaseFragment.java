@@ -12,10 +12,10 @@ public abstract class BaseFragment extends Fragment{
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-//        if (!HasLoadedOnce){
-//            loadData();
+        if (isVisibleToUser){
+            loadData();
 //            HasLoadedOnce=true;
-//        }
+        }
     }
 
     public abstract void loadData();
