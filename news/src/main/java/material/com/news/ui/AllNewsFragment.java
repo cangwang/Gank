@@ -1,27 +1,27 @@
 package material.com.news.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import material.com.base.BaseFragment;
-import material.com.base.event.SubmitStartEvent;
 import material.com.news.R;
+import material.com.news.adapter.ViewPagerAdapter;
 
 /**
  * Created by zjl on 2017/3/30.
@@ -43,6 +43,7 @@ public class AllNewsFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.news_all_fragment,container,false);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -108,7 +109,8 @@ public class AllNewsFragment extends BaseFragment{
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new SubmitStartEvent());
+//                EventBus.getDefault().post(new SubmitStartEvent());
+                startActivity(new Intent("com.cangwang.submit"));
             }
         });
     }
@@ -116,5 +118,20 @@ public class AllNewsFragment extends BaseFragment{
     @Override
     public void loadData() {
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_news_toolbar,menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings){
+            startActivity(new Intent("material.com.settings"));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

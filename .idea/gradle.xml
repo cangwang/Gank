@@ -8,12 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/advice" />
             <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/client" />
             <option value="$PROJECT_DIR$/news" />
             <option value="$PROJECT_DIR$/settings" />
             <option value="$PROJECT_DIR$/submit" />
-            <option value="$PROJECT_DIR$/top" />
             <option value="$PROJECT_DIR$/web" />
           </set>
         </option>

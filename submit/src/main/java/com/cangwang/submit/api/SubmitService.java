@@ -1,8 +1,6 @@
 package com.cangwang.submit.api;
 
 import com.cangwang.submit.model.SubmitResult;
-
-
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.POST;
@@ -12,7 +10,7 @@ import retrofit2.http.POST;
  */
 
 public interface SubmitService {
-    @POST
+    @POST("add2gank")
     Observable<SubmitResult> submitGank(@Field("url") String url
             ,@Field("desc") String desc
             ,@Field("who")String who

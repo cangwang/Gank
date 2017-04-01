@@ -9,11 +9,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +21,12 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import material.com.base.BaseFragment;
 import material.com.base.retrofit.CommonRetrofit;
 import material.com.news.R;
+import material.com.news.adapter.NewsReclyerAdapter;
 import material.com.news.api.NewsService;
 import material.com.news.model.NewsEntity;
 import material.com.news.model.NewsItem;
@@ -135,4 +133,5 @@ public class NewFragment extends BaseFragment{
                     }
                 });
     }
+
 }

@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import org.greenrobot.eventbus.EventBus;
+
+import material.com.base.event.ChangeAdiviceEvent;
+
 /**
  * Created by zjl on 2017/3/28.
  */
@@ -121,5 +125,9 @@ public class NewsItem {
         intent.putExtra("url",url);
         intent.putExtra("title",desc);
         view.getContext().startActivity(intent);
+        if (type.equals("福利")){     //更换
+            ChangeAdiviceEvent event =new ChangeAdiviceEvent(url);
+            EventBus.getDefault().post(event);
+        }
     }
 }
