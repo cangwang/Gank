@@ -24,15 +24,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <material.com.base.ui.flow.FlowLayout
-            android:id="@+id/settings_unset_flow"
+        <TextView
+            android:id="@+id/settings_set_txt"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="10dp"
-            app:lineSpacing="10dp"
-            android:background="#F0F0F0">
-
-        </material.com.base.ui.flow.FlowLayout>
+            android:layout_height="wrap_content"
+            android:background="#F0F0F0"
+            android:gravity="start"
+            android:paddingTop="10dp"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
+            android:text="栏目配置"/>
         <material.com.base.ui.flow.FlowLayout
             android:id="@+id/settings_set_flow"
             android:layout_width="match_parent"
@@ -40,9 +41,6 @@
             android:padding="10dp"
             app:lineSpacing="10dp"
             android:background="#F0F0F0"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/settings_unset_flow">
-
-        </material.com.base.ui.flow.FlowLayout>
+            android:layout_below="@+id/settings_set_txt"/>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

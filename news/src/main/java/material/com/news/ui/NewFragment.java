@@ -45,10 +45,6 @@ public class NewFragment extends BaseFragment{
     private List<NewsItem> datas = new ArrayList<>();
 
     private Retrofit retrofit;
-
-    private ProgressDialog pd;
-
-//    private String sort = "all";
     private int page=1;
 
     @Nullable
@@ -132,6 +128,13 @@ public class NewFragment extends BaseFragment{
                             mSwipeRefreshlayout.setRefreshing(false);
                     }
                 });
+
     }
 
+    @Override
+    public void onDestroyView() {
+        adapter.clearData();
+        datas = null;
+        super.onDestroyView();
+    }
 }

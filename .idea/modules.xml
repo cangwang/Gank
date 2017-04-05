@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/news/news.iml" filepath="$PROJECT_DIR$/news/news.iml" />
       <module fileurl="file://$PROJECT_DIR$/settings/settings.iml" filepath="$PROJECT_DIR$/settings/settings.iml" />
       <module fileurl="file://$PROJECT_DIR$/submit/submit.iml" filepath="$PROJECT_DIR$/submit/submit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/top/top.iml" filepath="$PROJECT_DIR$/top/top.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>

@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import material.com.base.BaseFragment;
+import material.com.base.utils.ListDataSave;
 import material.com.news.R;
 import material.com.news.adapter.ViewPagerAdapter;
 
@@ -32,12 +34,13 @@ public class AllNewsFragment extends BaseFragment{
     private ViewPager mViewPager;
     private ViewPagerAdapter mViewPagerAdapter;
     private List<Fragment> pageFagments = new ArrayList<Fragment>();
-    private List<String> pageTitles = new ArrayList<String>();
+    private List<String> pageTitles = new Vector<>();
     private TabLayout tabLayout;
     private FloatingActionButton addNewBtn;
 
     private View view;
 
+    private ListDataSave dataSave;
 
     @Nullable
     @Override
@@ -50,11 +53,13 @@ public class AllNewsFragment extends BaseFragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        dataSave = new ListDataSave(getContext(),"gank");
+        pageTitles = dataSave.getDataList("setting_data");
         Toolbar toolbar = (Toolbar)view.findViewById(R.id.news_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         tabLayout = (TabLayout) view.findViewById(R.id.news_gank_tab);
         mViewPager =(ViewPager) view.findViewById(R.id.news_gank_view_pager);
-        pageTitles = PageConfig.getPageTitles();
+//        pageTitles = PageConfig.getPageTitles();
 //        try{
 //            for (int i=0;i<PageConfig.fragmentNames.length;i++){
 //                String address = PageConfig.fragmentNames[i];
@@ -76,10 +81,11 @@ public class AllNewsFragment extends BaseFragment{
 //            e.printStackTrace();
 //        }
 
-        for(int i=0;i<PageConfig.fragmentNames.length;i++){
+
+        for(String item :pageTitles){
             Fragment tab = new NewFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("sort",PageConfig.getPageTitles().get(i));
+            bundle.putString("sort",item);
             tab.setArguments(bundle);
             pageFagments.add(tab);
         }

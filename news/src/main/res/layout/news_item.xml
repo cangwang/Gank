@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{news.clickToWeb}"
+        android:onClick="@{news::clickToWeb}"
         >
         <ImageView
             android:id="@+id/news_recyle_img"

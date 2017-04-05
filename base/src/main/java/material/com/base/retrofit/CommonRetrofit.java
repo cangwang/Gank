@@ -17,6 +17,7 @@ public class CommonRetrofit {
     private static final String BASE_URL = "http://gank.io/api/";
 
     private Retrofit retrofit;
+    private String bu = BASE_URL;
 
     public static CommonRetrofit getInstance(){
         if (Instance == null)
@@ -35,7 +36,22 @@ public class CommonRetrofit {
                 .client(builder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(BASE_URL)
+                .baseUrl(bu)
+                .build();
+    }
+    private CommonRetrofit(String baseUrl){
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(5, TimeUnit.SECONDS);
+
+        if (baseUrl !=null){
+            bu = baseUrl;
+        }
+
+        retrofit=new Retrofit.Builder()
+                .client(builder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(bu)
                 .build();
     }
 

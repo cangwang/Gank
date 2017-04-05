@@ -16,7 +16,9 @@ import java.util.List;
 
 import material.com.base.BaseActivity;
 import material.com.base.event.ChangeAdiviceEvent;
+import material.com.base.event.NewsItemChangeEvent;
 import material.com.base.event.SubmitStartEvent;
+import material.com.base.img.ImageLoader;
 import material.com.gank.ui.SplashView;
 
 public class MainActivity extends BaseActivity {
@@ -39,7 +41,6 @@ public class MainActivity extends BaseActivity {
         fm = getSupportFragmentManager();
         replaceFm(PageConfig.AllNewsFragment);
         EventBus.getDefault().register(this);
-
     }
 
     public void replaceFm(String className){
@@ -69,6 +70,12 @@ public class MainActivity extends BaseActivity {
         String url =event.url;
         if(url!=null && !url.isEmpty())
             SplashView.updateSplashData(this,url, url);
+    }
+
+    @Subscribe
+    public void onEvent(NewsItemChangeEvent event){
+        ImageLoader.clearCacheMemory(getApplication());
+        replaceFm(PageConfig.AllNewsFragment);
     }
 
     @Override

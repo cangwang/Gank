@@ -8,11 +8,9 @@ import java.util.Vector;
  */
 
 public class SettingConfig {
-    public static List<String> setDatas = new Vector<>();
-    public static List<String> unsetDatas = new Vector<>();
-
     public static List<String> getUnSetDats(){
-        unsetDatas.add("All");
+        List<String> unsetDatas = new Vector<>();
+        unsetDatas.add("all");
         unsetDatas.add("Android");
         unsetDatas.add("iOS");
         unsetDatas.add("福利");
