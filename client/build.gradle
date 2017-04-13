@@ -1,13 +1,16 @@
+apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "material.com.gank"
-        minSdkVersion 14
-        targetSdkVersion 25
+        if (!project.ext.isLib) {
+            applicationId project.ext.applicationId
+        }
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

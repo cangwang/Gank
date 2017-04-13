@@ -22,13 +22,14 @@ import android.widget.ViewSwitcher;
 import material.com.base.BaseActivity;
 import material.com.base.share.ShareUtils;
 import material.com.base.ui.circleprogress.CircleProgressBar;
+import material.com.web.ui.WebContact;
 
 
 /**
  * Created by zjl on 2017/3/29.
  */
 
-public class WebActivity extends BaseActivity{
+public class WebActivity extends BaseActivity implements WebContact.View{
 
     private WebView web;
     private Toolbar mToolBar;
@@ -38,6 +39,8 @@ public class WebActivity extends BaseActivity{
 
     private Intent baseIntent;
 
+    private WebContact.Prenster prenster;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,13 @@ public class WebActivity extends BaseActivity{
         initUI();
     }
 
-    private void initUI(){
+    @Override
+    public void setPresenter(WebContact.Prenster presenter) {
+
+    }
+
+    @Override
+    public void initUI(){
         baseIntent = getIntent();
         initToolbar();
         initWeb();
