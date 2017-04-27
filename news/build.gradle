@@ -1,5 +1,9 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-apply plugin: 'com.android.library'
+if (project.ext.isNewsDebug) {
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
@@ -22,6 +26,21 @@ android {
     }
     dataBinding{
         enabled = true
+    }
+
+    sourceSets {
+        main {
+            if (project.ext.isNewsDebug) {
+                manifest.srcFile 'src/debug/AndroidManifest.xml'
+                res.srcDirs = ['src/debug/res','src/main/res']
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //排除java/debug文件夹下的所有文件
+                    exclude 'src/debug/**'
+                }
+            }
+        }
     }
 }
 

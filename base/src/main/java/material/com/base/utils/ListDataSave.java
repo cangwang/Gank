@@ -22,6 +22,11 @@ public class ListDataSave {
         editor = preferences.edit();
     }
 
+    public ListDataSave(Context mContext, String preferenceName,int type) {
+        preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS|Context.MODE_WORLD_READABLE);
+        editor = preferences.edit();
+    }
+
     /**
      * 保存List
      * @param tag

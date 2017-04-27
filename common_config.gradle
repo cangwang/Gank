@@ -8,6 +8,8 @@ project.ext {
 
     isDebug = false;
     isLib = false;
+    isSettingDebug = true;
+    isNewsDebug = true;
 
     //混淆
 //    minifyEnable = true

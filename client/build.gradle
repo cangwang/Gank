@@ -30,9 +30,13 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':news')
+    if(!project.ext.isNewsDebug) {
+        compile project(':news')
+    }
     compile project(':submit')
     compile project(':web')
-    compile project(':settings')
+    if (!project.ext.isSettingDebug) {
+        compile project(':settings')
+    }
     compile project(':advice')
 }

@@ -54,6 +54,7 @@ public class SettingActivity extends BaseActivity{
         }
     }
 
+
     private void initToolbar(){
         mToolBar = (Toolbar)findViewById(R.id.settings_toolbar);
         mToolBar.setTitle("设置页面");
@@ -122,6 +123,7 @@ public class SettingActivity extends BaseActivity{
         if (isChange){
             EventBus.getDefault().post(new NewsItemChangeEvent());
         }
+        dataSave = null;
         super.onDestroy();
     }
 }
