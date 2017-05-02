@@ -18,7 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import material.com.base.BaseActivity;
+import material.com.base.*;
 import material.com.base.event.NewsItemChangeEvent;
 import material.com.base.ui.flow.FlowLayout;
 import material.com.base.utils.BaseUtils;
@@ -45,7 +45,7 @@ public class SettingActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         initToolbar();
-        dataSave = new ListDataSave(this,"gank");
+        dataSave = new ListDataSave(this,"gank", BuildConfig.BUILD_TYPE.equals("debug")? ListDataSave.DEBUG:ListDataSave.PUBLISH);
         setData = dataSave.getDataList("setting_data");
         setLayout = (FlowLayout)findViewById(R.id.settings_set_flow);
         allData = SettingConfig.getUnSetDats();

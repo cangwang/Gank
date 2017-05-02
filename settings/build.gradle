@@ -17,7 +17,6 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        buildConfigField('boolean','base_debug','true')
-        buildConfigField('int','SETTING_USER','512')
     }
     buildTypes {
         release {
@@ -28,6 +27,7 @@ android {
     dataBinding{
         enabled =true
     }
+
     sourceSets {
         main {
             if (project.ext.isSettingDebug) {

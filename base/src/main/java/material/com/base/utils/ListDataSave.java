@@ -16,15 +16,23 @@ import java.util.Vector;
 public class ListDataSave {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
+    public static final int DEBUG = 1;
+    public static final int DEV = 2;
+    public static final int PUBLISH = 3;
 
     public ListDataSave(Context mContext, String preferenceName) {
-        preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
+        preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_WORLD_READABLE);
         editor = preferences.edit();
     }
 
     public ListDataSave(Context mContext, String preferenceName,int type) {
-        preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS|Context.MODE_WORLD_READABLE);
-        editor = preferences.edit();
+        if (type == DEBUG) {
+            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS | Context.MODE_WORLD_READABLE);
+        }else {
+            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
+        }
+        if(preferences !=null)
+            editor = preferences.edit();
     }
 
     /**

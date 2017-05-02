@@ -22,6 +22,7 @@ import java.util.Vector;
 
 import material.com.base.BaseFragment;
 import material.com.base.utils.ListDataSave;
+import material.com.news.BuildConfig;
 import material.com.news.R;
 import material.com.news.adapter.ViewPagerAdapter;
 
@@ -53,7 +54,7 @@ public class AllNewsFragment extends BaseFragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataSave = new ListDataSave(getContext(),"gank");
+        dataSave = new ListDataSave(getContext(),"gank", BuildConfig.BUILD_TYPE.equals("debug")? ListDataSave.DEBUG:ListDataSave.PUBLISH);
         pageTitles = dataSave.getDataList("setting_data");
         Toolbar toolbar = (Toolbar)view.findViewById(R.id.news_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);

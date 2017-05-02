@@ -6,16 +6,18 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.List;
+
 import material.com.base.BaseActivity;
 import material.com.base.event.NewsItemChangeEvent;
 import material.com.base.img.ImageLoader;
 import material.com.base.utils.ListDataSave;
-import material.com.news.R;
 import material.com.news.ui.AllNewsFragment;
 
 /**
@@ -80,14 +82,14 @@ public class NewsActivity extends BaseActivity{
 
     private void getDataFromSF(){
         try{
-//            SharedPreferences share = getTargetContext().getSharedPreferences("gank",Context.MODE_MULTI_PROCESS|Context.MODE_WORLD_READABLE);
-            ListDataSave share = new ListDataSave(getTargetContext("material.com.settings"),"gank",0);
-            ListDataSave dataSave =  new ListDataSave(this,"gank");
+            ListDataSave share = new ListDataSave(getTargetContext("material.com.settings"),"gank",
+                    BuildConfig.BUILD_TYPE.equals("debug")? ListDataSave.DEBUG:ListDataSave.PUBLISH);
+            ListDataSave dataSave =  new ListDataSave(this,"gank",
+                    BuildConfig.BUILD_TYPE.equals("debug")? ListDataSave.DEBUG:ListDataSave.PUBLISH);
+            Log.d("NewsActivity",share.getDataList("setting_data").toString());
             dataSave.setDataList("setting_data",share.getDataList("setting_data"));
         }catch (PackageManager.NameNotFoundException e){
             e.printStackTrace();
         }
     }
-
-
 }
