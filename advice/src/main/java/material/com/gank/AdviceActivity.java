@@ -11,11 +11,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import material.com.base.BaseActivity;
 import material.com.gank.ui.SplashView;
 
 /**
- * Created by air on 2017/3/30.
+ * 广告页
+ * Created by cangwang on 2017/3/30.
  */
 
 public class AdviceActivity extends BaseActivity{
@@ -44,7 +47,8 @@ public class AdviceActivity extends BaseActivity{
             @Override
             public void onSplashViewDismiss(boolean initiativeDismiss) {
                 if(!hasClick) {
-                    startActivity(new Intent("material.com.top.MAIN"));
+//                    startActivity(new Intent("material.com.top.MAIN"));
+                    ARouter.getInstance().build("/gank_main/1").navigation();
                 }
                 finish();
             }

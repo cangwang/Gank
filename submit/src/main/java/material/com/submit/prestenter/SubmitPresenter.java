@@ -1,6 +1,6 @@
-package com.cangwang.submit.prestenter;
+package material.com.submit.prestenter;
 
-import com.cangwang.submit.ui.SubmitContact;
+import material.com.submit.ui.SubmitContact;
 
 /**
  * Created by cangwang on 2017/3/30.

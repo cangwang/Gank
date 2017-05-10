@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -21,6 +22,10 @@ import material.com.base.event.SubmitStartEvent;
 import material.com.base.img.ImageLoader;
 import material.com.gank.ui.SplashView;
 
+/**
+ * 首页
+ */
+@Route(path = "/gank_main/1")
 public class MainActivity extends BaseActivity {
     private List<Fragment> pageFagments = new ArrayList<Fragment>();
     private List<String> pageTitles = new ArrayList<String>();

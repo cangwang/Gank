@@ -1,6 +1,6 @@
-package com.cangwang.submit.api;
+package material.com.submit.api;
 
-import com.cangwang.submit.model.SubmitResult;
+import material.com.submit.model.SubmitResult;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.POST;

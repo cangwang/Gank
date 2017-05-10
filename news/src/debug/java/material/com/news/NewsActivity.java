@@ -29,7 +29,6 @@ public class NewsActivity extends BaseActivity{
     private long exitTime;
     private FragmentManager fm;
 
-
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();

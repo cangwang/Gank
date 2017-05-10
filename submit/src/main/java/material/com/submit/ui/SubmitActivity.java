@@ -1,18 +1,21 @@
-package com.cangwang.submit.ui;
+package material.com.submit.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.cangwang.submit.R;
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+import material.com.submit.R;
 
 import material.com.base.BaseActivity;
 
 /**
+ * 提交页
  * Created by cangwang on 2017/4/1.
  */
-
+@Route(path = "/gank_submit/1")
 public class SubmitActivity extends BaseActivity{
 
     @Override

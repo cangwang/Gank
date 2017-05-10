@@ -1,4 +1,4 @@
-package com.cangwang.submit.ui;
+package material.com.submit.ui;
 
 import material.com.base.BasePresenter;
 import material.com.base.BaseView;

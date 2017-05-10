@@ -3,6 +3,7 @@ package material.com.web;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -11,6 +12,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -19,6 +21,8 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import material.com.base.BaseActivity;
 import material.com.base.share.ShareUtils;
 import material.com.base.ui.circleprogress.CircleProgressBar;
@@ -26,9 +30,10 @@ import material.com.web.ui.WebContact;
 
 
 /**
+ * 网页显示
  * Created by zjl on 2017/3/29.
  */
-
+@Route(path = "/gank_web/1")
 public class WebActivity extends BaseActivity implements WebContact.View{
 
     private WebView web;
@@ -99,7 +104,8 @@ public class WebActivity extends BaseActivity implements WebContact.View{
         });
         mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
         mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
-        mTextSwitcher.setText(baseIntent.getStringExtra("title"));
+        String title = baseIntent.getStringExtra("title");
+        mTextSwitcher.setText(title);
         mTextSwitcher.setSelected(true);
     }
 
@@ -148,6 +154,12 @@ public class WebActivity extends BaseActivity implements WebContact.View{
                 super.onPageFinished(view, url);
                 mProgress.setVisibility(View.GONE);
             }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+//                super.onReceivedSslError(view, handler, error);
+                handler.proceed(); //接受证书
+            }
         });
 
         web.setWebChromeClient(new WebChromeClient(){
@@ -156,7 +168,8 @@ public class WebActivity extends BaseActivity implements WebContact.View{
                 super.onProgressChanged(view, newProgress);
             }
         });
-        web.loadUrl(baseIntent.getStringExtra("url"));
+        String url = baseIntent.getStringExtra("url");
+        web.loadUrl(url);
     }
 
     @Override

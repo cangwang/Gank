@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.LinkedList;
@@ -25,9 +27,10 @@ import material.com.base.utils.BaseUtils;
 import material.com.base.utils.ListDataSave;
 
 /**
+ * 设置
  * Created by cangwang on 2017/4/1.
  */
-
+@Route(path = "/gank_setting/1")
 public class SettingActivity extends BaseActivity{
 
     private FlowLayout setLayout;

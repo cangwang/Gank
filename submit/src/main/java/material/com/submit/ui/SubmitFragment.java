@@ -1,4 +1,4 @@
-package com.cangwang.submit.ui;
+package material.com.submit.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.cangwang.submit.R;
-import com.cangwang.submit.api.SubmitService;
-import com.cangwang.submit.model.SubmitResult;
-import com.cangwang.submit.prestenter.SubmitPresenter;
+import material.com.submit.R;
+import material.com.submit.api.SubmitService;
+import material.com.submit.model.SubmitResult;
+import material.com.submit.prestenter.SubmitPresenter;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -117,7 +119,8 @@ public class AllNewsFragment extends BaseFragment{
             @Override
             public void onClick(View view) {
 //                EventBus.getDefault().post(new SubmitStartEvent());
-                startActivity(new Intent("com.cangwang.submit"));
+//                startActivity(new Intent("com.cangwang.submit"));
+                ARouter.getInstance().build("/gank_submit/1").navigation();
             }
         });
     }
@@ -137,7 +140,8 @@ public class AllNewsFragment extends BaseFragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings){
-            startActivity(new Intent("material.com.settings"));
+//            startActivity(new Intent("material.com.settings"));
+            ARouter.getInstance().build("/gank_setting/1").navigation();
         }
         return super.onOptionsItemSelected(item);
     }

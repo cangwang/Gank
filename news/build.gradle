@@ -16,6 +16,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -34,9 +39,9 @@ android {
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-                java {
+                resources {
                     //排除java/debug文件夹下的所有文件
-                    exclude 'src/debug/**'
+                    exclude 'src/debug/*'
                 }
             }
         }
@@ -46,4 +51,5 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':base')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

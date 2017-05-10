@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import org.greenrobot.eventbus.EventBus;
 
 import material.com.base.event.ChangeAdiviceEvent;
@@ -120,11 +122,14 @@ public class NewsItem {
     }
 
     public void clickToWeb(View view){
-        view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-        Intent intent = new Intent("material.com.web.Web");
-        intent.putExtra("url",url);
-        intent.putExtra("title",desc);
-        view.getContext().startActivity(intent);
+//        Intent intent = new Intent("material.com.web.Web");
+//        intent.putExtra("url",url);
+//        intent.putExtra("title",desc);
+//        view.getContext().startActivity(intent);
+        ARouter.getInstance().build("/gank_web/1")
+                .withString("url",url)
+                .withString("title",desc)
+                .navigation();
         if (type.equals("福利")){     //更换
             ChangeAdiviceEvent event =new ChangeAdiviceEvent(url);
             EventBus.getDefault().post(event);

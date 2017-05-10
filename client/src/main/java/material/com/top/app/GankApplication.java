@@ -3,7 +3,10 @@ package material.com.top.app;
 import android.app.Application;
 import android.util.Log;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.squareup.leakcanary.LeakCanary;
+
+import material.com.gank.BuildConfig;
 
 /**
  * Created by air on 2017/4/2.
@@ -23,5 +26,10 @@ public class GankApplication extends Application{
         }
         LeakCanary.install(this);
         Log.d(TAG,"start LeakCanary");
+        if (BuildConfig.DEBUG){
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
     }
 }
