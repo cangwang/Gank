@@ -11,7 +11,7 @@ import org.greenrobot.eventbus.EventBus;
 import material.com.base.event.ChangeAdiviceEvent;
 
 /**
- * Created by zjl on 2017/3/28.
+ * Created by cangwang on 2017/3/28.
  */
 
 public class NewsItem {
@@ -25,6 +25,7 @@ public class NewsItem {
     public String url;
     public boolean used;
     public String who;
+    public int hasImage;
 
     public NewsItem(String _id, String createdAt, String desc, String[] images
             , String publishedAt, String source, String type, String url
@@ -121,6 +122,11 @@ public class NewsItem {
         this.who = who;
     }
 
+    public int getHasImage() {
+        hasImage = (images!=null && !images[0].equals(""))?View.VISIBLE:View.GONE;
+        return hasImage;
+    }
+
     public void clickToWeb(View view){
 //        Intent intent = new Intent("material.com.web.Web");
 //        intent.putExtra("url",url);
@@ -135,4 +141,9 @@ public class NewsItem {
             EventBus.getDefault().post(event);
         }
     }
+
+//    public int isHasImage(){
+//        return (images!=null && !images[0].equals(""))?View.VISIBLE:View.GONE;
+//    }
+
 }

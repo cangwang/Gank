@@ -23,6 +23,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginLeft="2dp"
             android:clickable="true"
+            android:visibility="@{news.hasImage}"
             app:imageurl="@{news.images[0]}"
             app:holderDrawable="@{@drawable/ic_launcher}"
             app:errorDrawable="@{@drawable/ic_launcher}"/>

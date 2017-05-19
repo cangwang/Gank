@@ -9,7 +9,7 @@ import com.squareup.leakcanary.LeakCanary;
 import material.com.gank.BuildConfig;
 
 /**
- * Created by air on 2017/4/2.
+ * Created by cangwang on 2017/4/2.
  */
 
 public class GankApplication extends Application{
@@ -26,10 +26,10 @@ public class GankApplication extends Application{
         }
         LeakCanary.install(this);
         Log.d(TAG,"start LeakCanary");
-        if (BuildConfig.DEBUG){
+//        if (BuildConfig.DEBUG){
             ARouter.openLog();
             ARouter.openDebug();
-        }
+//        }
         ARouter.init(this);
     }
 }

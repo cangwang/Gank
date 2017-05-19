@@ -1,6 +1,8 @@
 package material.com.gank;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -13,7 +15,11 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import material.com.base.BaseActivity;
+import material.com.base.utils.ListDataSave;
 import material.com.gank.ui.SplashView;
 
 /**
@@ -53,12 +59,24 @@ public class AdviceActivity extends BaseActivity{
                 finish();
             }
         });
+        dataInit();
 //        SplashView.updateSplashData(AdviceActivity.this, "http://ww2.sinaimg.cn/large/72f96cbagw1f5mxjtl6htj20g00sg0vn.jpg", "http://jkyeo.com");
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == adviceReqCode)
-//    }
+    private void dataInit(){
+        SharedPreferences sp = getSharedPreferences("gank", Context.MODE_PRIVATE);
+        boolean firstEnter = sp.getBoolean("first_enter",false);
+        if (!firstEnter) {
+            ListDataSave dataSave = new ListDataSave(this, "gank", BuildConfig.BUILD_TYPE.equals("debug") ? ListDataSave.DEBUG : ListDataSave.PUBLISH);
+            List<String> setData = new ArrayList<>();
+            setData.add("all");
+            setData.add("Android");
+            setData.add("iOS");
+            setData.add("福利");
+            dataSave.setDataList("setting_data", setData);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("first_enter",true);
+            editor.commit();
+        }
+    }
 }

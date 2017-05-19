@@ -20,7 +20,7 @@ import material.com.news.databinding.NewsItemBinding;
 import material.com.news.model.NewsItem;
 
 /**
- * Created by zjl on 2017/3/27.
+ * Created by cangwang on 2017/3/27.
  */
 public class NewsReclyerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -35,12 +35,14 @@ public class NewsReclyerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public void setDatas(List<NewsItem> datas) {
-        this.datas = datas;
+        if (datas!=null)
+            this.datas = datas;
         notifyDataSetChanged();
     }
 
     public void addDatas(List<NewsItem> data){
-        datas.addAll(data);
+        if (data!=null)
+            datas.addAll(data);
         notifyDataSetChanged();
     }
 

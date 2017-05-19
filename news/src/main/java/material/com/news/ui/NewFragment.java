@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +79,20 @@ public class NewFragment extends BaseFragment{
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && layoutManager.findLastVisibleItemPosition()+1 == adapter.getItemCount()){
-                    page++;
-                    loadData();
+//                if (newState == RecyclerView.SCROLL_STATE_IDLE && layoutManager.findLastVisibleItemPosition()+1 == adapter.getItemCount()){
+//                    page++;
+//                    loadData();
+//                }
+                if (newState == RecyclerView.SCROLL_STATE_IDLE ){  //当屏幕停止滚动，加载图片
+                    if (layoutManager.findLastVisibleItemPosition()+1 == adapter.getItemCount()){
+                        page++;
+                        loadData();
+                    }
+                    Glide.with(getContext()).resumeRequests();
+                }else if (newState == RecyclerView.SCROLL_STATE_DRAGGING){  //当屏幕滚动且用户使用的触碰或手指还在屏幕上，停止加载图片
+                    Glide.with(getContext()).pauseRequests();
+                }else if (newState == RecyclerView.SCROLL_STATE_SETTLING){  //由于用户的操作，屏幕产生惯性滑动，停止加载图片
+                    Glide.with(getContext()).pauseRequests();
                 }
             }
 
