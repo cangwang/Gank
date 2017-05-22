@@ -4,6 +4,9 @@ if (project.ext.isNewsDebug) {
 }else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
@@ -52,4 +55,9 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':base')
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+    kapt 'com.android.databinding:compiler:2.3.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
