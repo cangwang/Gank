@@ -62,14 +62,14 @@ class MaterialProgressDrawable(context: Context, private val mAnimExcutor: View)
     /**
      * Canvas rotation in degrees.
      */
-    private var rotation: Float = 0.toFloat()
+    private var rotation: Float = 0f
         set(rotation) {
             field = rotation
             invalidateSelf()
         }
     private val mResources: Resources
     private var mAnimation: Animation? = null
-    private var mRotationCount: Float = 0.toFloat()
+    private var mRotationCount: Float = 0f
     private var mWidth: Double = 0.toDouble()
     private var mHeight: Double = 0.toDouble()
     private var mShowArrowOnFirstStart = false
@@ -77,7 +77,7 @@ class MaterialProgressDrawable(context: Context, private val mAnimExcutor: View)
     init {
         mResources = context.resources
 
-        mRing = Ring(mCallback)
+        mRing = Ring(this,mCallback)
         mRing.setColors(COLORS)
 
         updateSizes(DEFAULT)
@@ -327,11 +327,12 @@ class MaterialProgressDrawable(context: Context, private val mAnimExcutor: View)
     @IntDef(LARGE.toLong(), DEFAULT.toLong())
     annotation class ProgressDrawableSize
 
-    private class Ring(private val mCallback: Drawable.Callback) {
+    private class Ring(d:Drawable,private val mCallback: Drawable.Callback) {
         private val mTempBounds = RectF()
         private val mPaint = Paint()
         private val mArrowPaint = Paint()
         private val mCirclePaint = Paint()
+        private val dr:Drawable = d
         var startTrim = 0.0f
             set(startTrim) {
                 field = startTrim
@@ -559,7 +560,7 @@ class MaterialProgressDrawable(context: Context, private val mAnimExcutor: View)
         }
 
         private fun invalidateSelf() {
-            mCallback.invalidateDrawable(null!!)
+           mCallback.invalidateDrawable(dr)
         }
     }
 

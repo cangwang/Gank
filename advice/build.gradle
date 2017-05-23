@@ -33,7 +33,6 @@ task copyTestClasses(type: Copy) {
     into "build/intermediates/classes/debug"
 }
 
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':base')

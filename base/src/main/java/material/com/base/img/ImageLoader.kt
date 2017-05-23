@@ -58,6 +58,11 @@ object ImageLoader {
 
     @BindingAdapter(value = *arrayOf("imageurl", "holderDrawable", "errorDrawable"), requireAll = false)
     @JvmStatic fun loadImge(imageView: ImageView, url: String?, holderDrawable: Drawable, errorDrawable: Drawable) {
+        if (NetworkUitls.isWifiConnected(imageView.context)) {
+            loadNormal(imageView, url, holderDrawable, errorDrawable)
+        } else {
+            loadCache(imageView, url, holderDrawable, errorDrawable)
+        }
         //        if (url==null||url.equals("")){
         //            imageView.setVisibility(View.GONE);
         //            return;
@@ -74,11 +79,7 @@ object ImageLoader {
         //                .into(imageView)
         //                .onLoadStarted(holderDrawable);
 
-        if (NetworkUitls.isWifiConnected(imageView.context)) {
-            loadNormal(imageView, url, holderDrawable, errorDrawable)
-        } else {
-            loadCache(imageView, url, holderDrawable, errorDrawable)
-        }
+
     }
 
     private fun loadNormal(imageView: ImageView, url: String?, holderDrawable: Drawable, errorDrawable: Drawable) {

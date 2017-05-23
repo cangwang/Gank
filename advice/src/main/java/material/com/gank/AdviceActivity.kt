@@ -35,7 +35,7 @@ class AdviceActivity : BaseActivity() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
         SplashView.showSplashView(this, 3, null, R.drawable.dream, object : SplashView.OnSplashViewActionListener {
-            override fun onSplashImageClick(actionUrl: String) {
+            override fun onSplashImageClick(actionUrl: String?) {
                 //                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
                 val topIntent = Intent(Intent("material.com.top.MAIN"))
                 val webIntent = Intent("material.com.web.Web")

@@ -122,7 +122,7 @@ class WebActivity : BaseActivity(), WebContact.View {
         webSettings.defaultTextEncodingName = "UTF-8"
 
         web!!.setWebViewClient(object : WebViewClient() {
-            override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
+            override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 mProgress!!.visibility = View.VISIBLE
             }
