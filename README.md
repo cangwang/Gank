@@ -4,3 +4,11 @@
 <br>
 2017.5.19 修改存在的加载bug问题。<br>
 2017.5.23 已经集成了最新Kotlin分支。<br>
+<br>
+关于作者<br>
+CangWang，热衷于组件化技术架构研发。提供组件化技术的指导。<br>
+《如果做一个崩溃率少于千分之三噶应用app》系列的作者<br>
+简书主页:http://www.jianshu.com/u/cd0fe10b01d2 <br>
+掘进专栏作者：https://juejin.im/user/565c6d3100b0acaad47e9050 <br>
+QQ讨论群:301556016,需要验证问题
+
