@@ -32,7 +32,7 @@ class AdviceActivity : BaseActivity() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
         SplashView.showSplashView(this, 3, null, R.drawable.dream, object : SplashView.OnSplashViewActionListener {
             override fun onSplashImageClick(actionUrl: String?) {
@@ -54,6 +54,7 @@ class AdviceActivity : BaseActivity() {
                 finish()
             }
         })
+
         dataInit()
         //        SplashView.updateSplashData(AdviceActivity.this, "http://ww2.sinaimg.cn/large/72f96cbagw1f5mxjtl6htj20g00sg0vn.jpg", "http://jkyeo.com");
     }
