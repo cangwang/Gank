@@ -23,6 +23,7 @@ import material.com.gank.ui.SplashView
 
 /**
  * 首页
+ * Created by cangwang on 16/7/6.
  */
 @Route(path = "/gank_main/1")
 class MainActivity : BaseActivity() {

@@ -3,7 +3,7 @@ package material.com.top
 import java.util.ArrayList
 
 /**
- * Created by zjl on 16/7/6.
+ * Created by cangwang on 16/7/6.
  */
 object PageConfig {
     private val pageTitles = ArrayList<String>()
