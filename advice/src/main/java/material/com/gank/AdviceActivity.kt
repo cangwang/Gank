@@ -33,7 +33,7 @@ class AdviceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)a
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
         SplashView.showSplashView(this, 3, null, R.drawable.dream, object : SplashView.OnSplashViewActionListener {
             override fun onSplashImageClick(actionUrl: String?) {
                 //                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
