@@ -109,8 +109,8 @@ class AllNewsFragment : BaseFragment() {
         addNewBtn = view.findViewById(R.id.news_add_float_btn) as FloatingActionButton
         addNewBtn!!.setOnClickListener {
             //                EventBus.getDefault().post(new SubmitStartEvent());
-            startActivity(Intent("com.cangwang.submit"));
-//            ARouter.getInstance().build("/gank_submit/1").navigation()
+//            startActivity(Intent("com.cangwang.submit"));
+            ARouter.getInstance().build("/gank_submit/1").navigation()
         }
     }
 
@@ -126,8 +126,8 @@ class AllNewsFragment : BaseFragment() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item!!.itemId
         if (id == R.id.action_settings) {
-            startActivity(Intent("material.com.settings"));
-//            ARouter.getInstance().build("/gank_setting/1").navigation()
+//            startActivity(Intent("material.com.settings"));
+            ARouter.getInstance().build("/gank_setting/1").navigation()
         }
         return super.onOptionsItemSelected(item)
     }

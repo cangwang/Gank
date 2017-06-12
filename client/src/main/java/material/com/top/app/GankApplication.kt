@@ -23,10 +23,10 @@ class GankApplication : Application() {
         LeakCanary.install(this)
         Log.d(TAG, "start LeakCanary")
         //        if (BuildConfig.DEBUG){
-//        ARouter.openLog()
-//        ARouter.openDebug()
+        ARouter.openLog()
+        ARouter.openDebug()
 //        //        }
-//        ARouter.init(this)
+        ARouter.init(this)
     }
 
     companion object {

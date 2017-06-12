@@ -25,14 +25,14 @@ class NewsItem(var _id: String, var createdAt: String, var desc: String, var ima
     }
 
     fun clickToWeb(view: View) {
-        var intent = Intent("material.com.web.Web");
-        intent.putExtra("url",url);
-        intent.putExtra("title",desc);
-        view.getContext().startActivity(intent);
-//        ARouter.getInstance().build("/gank_web/1")
-//                .withString("url", url)
-//                .withString("title", desc)
-//                .navigation()
+//        var intent = Intent("material.com.web.Web");
+//        intent.putExtra("url",url);
+//        intent.putExtra("title",desc);
+//        view.getContext().startActivity(intent);
+        ARouter.getInstance().build("/gank_web/1")
+                .withString("url", url)
+                .withString("title", desc)
+                .navigation()
         if (type == "福利") {     //更换
             val event = ChangeAdiviceEvent(url)
             EventBus.getDefault().post(event)

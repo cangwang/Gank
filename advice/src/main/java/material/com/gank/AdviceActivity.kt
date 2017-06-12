@@ -33,13 +33,13 @@ class AdviceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)a
         SplashView.showSplashView(this, 3, null, R.drawable.dream, object : SplashView.OnSplashViewActionListener {
             override fun onSplashImageClick(actionUrl: String?) {
                 //                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
                 val topIntent = Intent(Intent("material.com.top.MAIN"))
                 val webIntent = Intent("material.com.web.Web")
-                webIntent.putExtra("url", "http://www.baidu.com")
+                webIntent.putExtra("url", "https://github.com/cangwang/Gank/tree/kotlin")
                 val its = arrayOf(topIntent, webIntent)
                 startActivities(its)
                 hasClick = true

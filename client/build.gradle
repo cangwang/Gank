@@ -19,11 +19,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
-            }
-        }
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [ moduleName : project.getName() ]
+//            }
+//        }
     }
     buildTypes {
         release {
@@ -33,6 +33,13 @@ android {
     }
     dataBinding{
         enabled =true
+    }
+}
+
+kapt {
+    generateStubs = true
+    arguments {
+        arg("moduleName",project.getName())
     }
 }
 
@@ -47,7 +54,7 @@ dependencies {
         compile project(':settings')
     }
     compile project(':advice')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+    kapt 'com.alibaba:arouter-compiler:1.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kapt 'com.android.databinding:compiler:2.3.0'
 }
