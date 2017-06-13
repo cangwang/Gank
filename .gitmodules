@@ -1,3 +1,24 @@
 [submodule "home"]
 	path = home
 	url = https://github.com/cangwang/home
+[submodule "advice"]
+	path = advice
+	url = https://github.com/cangwang/advice
+[submodule "client"]
+	path = client
+	url = https://github.com/cangwang/client
+[submodule "base"]
+	path = base
+	url = https://github.com/cangwang/base
+[submodule "news"]
+	path = news
+	url = https://github.com/cangwang/news
+[submodule "settings"]
+	path = settings
+	url = https://github.com/cangwang/settings
+[submodule "submit"]
+	path = submit
+	url = https://github.com/cangwang/submit
+[submodule "web"]
+	path = web
+	url = https://github.com/cangwang/web
