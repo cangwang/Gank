@@ -27,8 +27,8 @@ import material.com.gank.ui.SplashView;
  */
 @Route(path = "/gank_main/1")
 public class MainActivity extends BaseActivity {
-    private List<Fragment> pageFagments = new ArrayList<Fragment>();
-    private List<String> pageTitles = new ArrayList<String>();
+//    private List<Fragment> pageFagments = new ArrayList<Fragment>();
+//    private List<String> pageTitles = new ArrayList<String>();
 
     private long exitTime;
     private FragmentManager fm;
