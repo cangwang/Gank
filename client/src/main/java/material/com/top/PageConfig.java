@@ -26,4 +26,10 @@ public class PageConfig {
             NewFragment,
             NewFragment
     };
+
+    private static final String NewsInit = "material.com.news.api.NewsInit";
+
+    public static String[] initModules = {
+            NewsInit
+    };
 }

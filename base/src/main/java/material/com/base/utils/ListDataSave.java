@@ -68,6 +68,5 @@ public class ListDataSave {
         datalist = gson.fromJson(strJson, new TypeToken<List<T>>() {
         }.getType());
         return datalist;
-
     }
 }
