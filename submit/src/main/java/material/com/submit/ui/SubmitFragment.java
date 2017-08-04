@@ -38,9 +38,8 @@ import retrofit2.Retrofit;
  * Created by cangwang on 2017/3/30.
  */
 
-public class SubmitFragment extends BaseFragment implements SubmitContact.View{
+public class SubmitFragment extends BaseFragment{
 
-    SubmitContact.Presenter presenter;
     private Toolbar mToolBar;
     private ActionBar mActionBar;
     private TextInputEditText mUrlTxt;
@@ -76,8 +75,6 @@ public class SubmitFragment extends BaseFragment implements SubmitContact.View{
                 submitGank();
             }
         });
-
-        presenter = new SubmitPresenter(this);
     }
 
     private void initToolbar(View view){
@@ -156,30 +153,7 @@ public class SubmitFragment extends BaseFragment implements SubmitContact.View{
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        presenter.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        presenter.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        presenter.onDestroy();
-    }
-
-    @Override
     public void loadData() {
-
-    }
-
-    @Override
-    public void setPresenter(SubmitContact.Presenter presenter) {
 
     }
 }
