@@ -23,10 +23,10 @@ import android.widget.ViewSwitcher;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
-import material.com.base.BaseActivity;
-import material.com.base.share.ShareUtils;
+import material.com.base.BaseMvpActivity;
 import material.com.base.ui.circleprogress.CircleProgressBar;
-import material.com.web.ui.WebContact;
+import material.com.web.presenter.WebPresenter;
+import material.com.web.ui.IWebView;
 
 
 /**
@@ -34,7 +34,7 @@ import material.com.web.ui.WebContact;
  * Created by zjl on 2017/3/29.
  */
 @Route(path = "/gank_web/1")
-public class WebActivity extends BaseActivity implements WebContact.View{
+public class WebActivity extends BaseMvpActivity<WebPresenter,IWebView> implements IWebView{
 
     private WebView web;
     private Toolbar mToolBar;
@@ -44,7 +44,10 @@ public class WebActivity extends BaseActivity implements WebContact.View{
 
     private Intent baseIntent;
 
-    private WebContact.Prenster prenster;
+    @Override
+    public WebPresenter createPresenter() {
+        return new WebPresenter(this);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,12 +56,6 @@ public class WebActivity extends BaseActivity implements WebContact.View{
         initUI();
     }
 
-    @Override
-    public void setPresenter(WebContact.Prenster presenter) {
-
-    }
-
-    @Override
     public void initUI(){
         baseIntent = getIntent();
         initToolbar();
@@ -182,7 +179,7 @@ public class WebActivity extends BaseActivity implements WebContact.View{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id =item.getItemId();
         if (id == R.id.action_share){
-            ShareUtils.shareText(this,"【"+getIntent().getStringExtra("title")+"】"+getIntent().getStringExtra("url"));
+           presenter.shareText(getIntent());
         }
 
         return super.onOptionsItemSelected(item);
