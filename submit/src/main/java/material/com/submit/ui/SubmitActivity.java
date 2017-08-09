@@ -24,7 +24,7 @@ public class SubmitActivity extends BaseActivity{
         setContentView(R.layout.submit_activity);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tr = fm.beginTransaction();
-        SubmitFragment sf = new SubmitFragment();
+        SubmitButterFragment sf = new SubmitButterFragment();
         tr.replace(R.id.submit_activity,sf);
         tr.commitAllowingStateLoss();
     }
