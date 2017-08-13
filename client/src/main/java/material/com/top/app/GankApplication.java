@@ -1,6 +1,8 @@
 package material.com.top.app;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.MutableLong;
 
@@ -15,6 +17,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import material.com.base.BaseAppInt;
+import material.com.base.app.BaseApplication;
 import material.com.gank.BuildConfig;
 import material.com.top.PageConfig;
 
@@ -22,7 +25,7 @@ import material.com.top.PageConfig;
  * Created by cangwang on 2017/4/2.
  */
 
-public class GankApplication extends Application{
+public class GankApplication extends BaseApplication{
     private static final String TAG = "GankApplication";
     @Override
     public void onCreate() {
@@ -46,19 +49,6 @@ public class GankApplication extends Application{
     }
 
     public void initModulesSpeed(){
-//        for (String init: PageConfig.initModules){
-//            try {
-//                Class<?> clazz = Class.forName(init);
-//                BaseAppInt moudleInit = (BaseAppInt) clazz.newInstance();
-//                moudleInit.onInitSpeed(this);
-//            }catch (ClassNotFoundException e){
-//                Log.e(TAG,"error="+e.toString());
-//            }catch (IllegalAccessException e){
-//                Log.e(TAG,"error="+e.toString());
-//            }catch (InstantiationException e){
-//                Log.e(TAG,"error="+e.toString());
-//            }
-//        }
         Observable.fromArray(PageConfig.initModules).subscribeOn(Schedulers.io()).subscribe(new Consumer<String>() {
             @Override
             public void accept(@NonNull String init) throws Exception {
@@ -92,4 +82,5 @@ public class GankApplication extends Application{
             }
         }
     }
+
 }
