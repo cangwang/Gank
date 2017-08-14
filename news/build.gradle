@@ -50,6 +50,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':base')
+    compile project(':flow')
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

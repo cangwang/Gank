@@ -13,6 +13,7 @@ import java.util.Vector;
 import material.com.base.BaseFragment;
 import material.com.base.BasePresenter;
 import material.com.base.utils.ListDataSave;
+import material.com.flow.FlowFragment;
 import material.com.news.BuildConfig;
 import material.com.news.adapter.ViewPagerAdapter;
 import material.com.news.ui.IAllNewView;
@@ -47,6 +48,8 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
             tab.setArguments(bundle);
             pageFagments.add(tab);
         }
+        pageTitles.add("Flow");
+        pageFagments.add(new FlowFragment());
 
         getView().initPageAapter(new ViewPagerAdapter(bf.getChildFragmentManager(),pageFagments,pageTitles));
     }
