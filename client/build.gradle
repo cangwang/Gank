@@ -22,6 +22,10 @@ android {
         }
     }
     buildTypes {
+        debug{
+            minifyEnabled false
+            shrinkResources false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -29,6 +33,37 @@ android {
     }
     dataBinding{
         enabled =true
+    }
+    productFlavors {
+        client{
+            manifestPlaceholders=[
+                    channel:"10086",
+                    verNum:"1",
+                    app_name:"Gank"
+            ]
+            //使用dependencies来区分配置模块
+            dependencies {
+                compile project(':submit')
+                if (!project.ext.isSettingDebug) {
+                    compile project(':settings')
+                }
+            }
+        }
+        server{
+            if (!project.ext.isLib) {
+                applicationId project.ext.applicationId+'.server'
+            }
+            manifestPlaceholders=[
+                    channel:"10087",
+                    verNum:"1",
+                    app_name:"Gank服务版"
+            ]
+            dependencies {
+                if (!project.ext.isSettingDebug) {
+                    compile project(':server_settings')
+                }
+            }
+        }
     }
 }
 
@@ -41,11 +76,11 @@ dependencies {
     if(!project.ext.isNewsDebug) {
         compile project(':news')
     }
-    compile project(':submit')
+//    compile project(':submit')
     compile project(':web')
-    if (!project.ext.isSettingDebug) {
-        compile project(':settings')
-    }
+//    if (!project.ext.isSettingDebug) {
+//        compile project(':settings')
+//    }
     compile project(':advice')
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

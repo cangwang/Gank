@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import material.com.base.BaseMvpFragment;
+import material.com.base.utils.AppMetaUtil;
 import material.com.news.R;
 import material.com.news.presenter.AllNewsPresenter;
 
@@ -73,6 +74,9 @@ public class AllNewsFragment extends BaseMvpFragment<AllNewsPresenter,IAllNewVie
             }
         });
         addNewBtn = (FloatingActionButton)view.findViewById(R.id.news_add_float_btn);
+        if (AppMetaUtil.getChannelNum(getActivity().getApplicationContext())==10087){
+            addNewBtn.setVisibility(View.GONE);
+        }
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

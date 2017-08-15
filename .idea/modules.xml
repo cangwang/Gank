@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
       <module fileurl="file://$PROJECT_DIR$/flow/flow.iml" filepath="$PROJECT_DIR$/flow/flow.iml" />
       <module fileurl="file://$PROJECT_DIR$/news/news.iml" filepath="$PROJECT_DIR$/news/news.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server_settings/server_settings.iml" filepath="$PROJECT_DIR$/server_settings/server_settings.iml" />
       <module fileurl="file://$PROJECT_DIR$/settings/settings.iml" filepath="$PROJECT_DIR$/settings/settings.iml" />
       <module fileurl="file://$PROJECT_DIR$/submit/submit.iml" filepath="$PROJECT_DIR$/submit/submit.iml" />
       <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />

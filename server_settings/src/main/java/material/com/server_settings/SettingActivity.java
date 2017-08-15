@@ -1,4 +1,4 @@
-package material.com.settings;
+package material.com.server_settings;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,21 +16,19 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import material.com.base.*;
+import material.com.base.BaseActivity;
 import material.com.base.event.NewsItemChangeEvent;
 import material.com.base.ui.flow.FlowLayout;
 import material.com.base.utils.BaseUtils;
 import material.com.base.utils.ListDataSave;
-
 /**
  * 设置
  * Created by cangwang on 2017/4/1.
  */
-@Route(path = "/gank_setting/1")
+@Route(path = "/gank_setting_server/1")
 public class SettingActivity extends BaseActivity{
 
     private FlowLayout setLayout;
@@ -56,7 +53,7 @@ public class SettingActivity extends BaseActivity{
         for (final String item:allData){
            addUnsetItem(setLayout, item);
         }
-        Toast.makeText(this,"settings",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"server_settings",Toast.LENGTH_SHORT).show();
     }
 
 

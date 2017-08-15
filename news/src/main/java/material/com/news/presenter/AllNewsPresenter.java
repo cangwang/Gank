@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import material.com.base.BaseFragment;
 import material.com.base.BasePresenter;
+import material.com.base.utils.AppMetaUtil;
 import material.com.base.utils.ListDataSave;
 import material.com.flow.FlowFragment;
 import material.com.news.BuildConfig;
@@ -30,9 +31,11 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
     private List<Fragment> pageFagments = new ArrayList<Fragment>();
 
     private ListDataSave dataSave;
+    int channel = 0;
 
     public AllNewsPresenter(BaseFragment bf){
         this.bf = bf;
+        channel=AppMetaUtil.getChannelNum(bf.getActivity().getApplicationContext());
     }
 
     public void getData(){
@@ -62,7 +65,14 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
 
     public void navigationSettings(){
         //            startActivity(new Intent("material.com.settings"));
-        ARouter.getInstance().build("/gank_setting/1").navigation();
+
+        String path = "/gank_setting";
+        if (channel == 10086) {
+            path +="/1";
+        }else if (channel == 10087){
+            path +="_server/1";
+        }
+        ARouter.getInstance().build(path).navigation();
     }
 
     @Override
