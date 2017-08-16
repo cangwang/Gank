@@ -45,6 +45,12 @@ android {
                 }
             }
         }
+        release{
+            resources {
+                //排除java/debug文件夹下的所有文件
+                exclude 'src/debug/*,src/androidTest/*,src/test/*'
+            }
+        }
     }
 }
 

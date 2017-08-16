@@ -27,7 +27,7 @@ android {
             shrinkResources false
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,14 +37,16 @@ android {
     productFlavors {
         client{
             manifestPlaceholders=[
-                    channel:"10086",
-                    verNum:"1",
-                    app_name:"Gank"
+                    channel:"10086",  //渠道号
+                    verNum:"1",       //版本号
+                    app_name:"Gank"   //app名
             ]
             //使用dependencies来区分配置模块
             dependencies {
+                //包含提交模块
                 compile project(':submit')
                 if (!project.ext.isSettingDebug) {
+                    //包含用户设置模块
                     compile project(':settings')
                 }
             }
@@ -54,17 +56,19 @@ android {
                 applicationId project.ext.applicationId+'.server'
             }
             manifestPlaceholders=[
-                    channel:"10087",
-                    verNum:"1",
-                    app_name:"Gank服务版"
+                    channel:"10087",   //渠道号
+                    verNum:"1",        //版本号
+                    app_name:"Gank服务版"   //app名
             ]
             dependencies {
                 if (!project.ext.isSettingDebug) {
+                    //包含服务版设置模块
                     compile project(':server_settings')
                 }
             }
         }
     }
+
 }
 
 dependencies {

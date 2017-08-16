@@ -32,14 +32,14 @@ public class GankApplication extends BaseApplication{
         super.onCreate();
         initModulesSpeed();
         Log.d(TAG,"onCreate");
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            Log.d(TAG,"pass LeakCanary");
-            return;
-        }
-        LeakCanary.install(this);
-        Log.d(TAG,"start LeakCanary");
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your app in this process.
+//            Log.d(TAG,"pass LeakCanary");
+//            return;
+//        }
+//        LeakCanary.install(this);
+//        Log.d(TAG,"start LeakCanary");
 //        if (BuildConfig.DEBUG){
             ARouter.openLog();
             ARouter.openDebug();

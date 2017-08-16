@@ -12,6 +12,12 @@ import android.util.Log;
 public class AppMetaUtil {
     public static int channelNum=0;
 
+    /**
+     * 获取meta-data值
+     * @param context
+     * @param metatName  key名
+     * @return
+     */
     public static Object getMetaData(Context context, String metatName){
         Object obj= null;
         try {
@@ -27,6 +33,11 @@ public class AppMetaUtil {
         }
     }
 
+    /**
+     * 获取渠道号
+     * @param context
+     * @return
+     */
     public static int getChannelNum(Context context){
         if (channelNum <= 0){
             Object obj = AppMetaUtil.getMetaData(context,"channel");

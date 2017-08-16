@@ -63,9 +63,10 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
         ARouter.getInstance().build("/gank_submit/1").navigation();
     }
 
+    /**
+     * 跳转到设置页面
+     */
     public void navigationSettings(){
-        //            startActivity(new Intent("material.com.settings"));
-
         String path = "/gank_setting";
         if (channel == 10086) {
             path +="/1";
