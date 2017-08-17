@@ -1,11 +1,13 @@
 package material.com.news.model;
 
+import android.support.annotation.Keep;
+
 import java.util.List;
 
 /**
  * Created by zjl on 2017/3/28.
  */
-
+@Keep
 public class NewsEntity {
     private boolean error;
     private List<NewsItem> results;

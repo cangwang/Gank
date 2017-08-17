@@ -16,6 +16,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.support.annotation.ColorRes;
+import android.support.annotation.IdRes;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
@@ -301,7 +303,7 @@ public class CircleProgressBar extends ImageView {
     /**
      * Update the background color of the mBgCircle image view.
      */
-    public void setBackgroundColor(int colorRes) {
+    public void setBackgroundColor(@ColorRes int colorRes) {
         if (getBackground() instanceof ShapeDrawable) {
             final Resources res = getResources();
             ((ShapeDrawable) getBackground()).getPaint().setColor(res.getColor(colorRes));

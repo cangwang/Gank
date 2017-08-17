@@ -2,6 +2,7 @@ package material.com.news.model;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.Keep;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -13,7 +14,7 @@ import material.com.base.event.ChangeAdiviceEvent;
 /**
  * Created by cangwang on 2017/3/28.
  */
-
+@Keep
 public class NewsItem {
     public String _id;
     public String createdAt;

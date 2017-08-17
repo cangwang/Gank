@@ -2,9 +2,16 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        cang_wang {
+            keyAlias 'cang_wang'
+            keyPassword 'ling123456'
+            storeFile file('/Users/air/Desktop/Android/MyJob/Gank/cang_wang.jks')
+            storePassword 'ling123456'
+        }
+    }
     compileSdkVersion project.ext.compileSdkVersion
     buildToolsVersion project.ext.buildToolsVersion
-
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
@@ -17,29 +24,32 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
     buildTypes {
-        debug{
-            minifyEnabled false
-            shrinkResources false
+        debug {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.cang_wang
+            proguardFile '/Users/air/Desktop/Android/MyJob/Gank/client/proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled =true
+    dataBinding {
+        enabled = true
     }
     productFlavors {
-        client{
-            manifestPlaceholders=[
-                    channel:"10086",  //渠道号
-                    verNum:"1",       //版本号
-                    app_name:"Gank"   //app名
+        client {
+            manifestPlaceholders = [
+                    channel : "10086",  //渠道号
+                    verNum  : "1",       //版本号
+                    app_name: "Gank"   //app名
             ]
             //使用dependencies来区分配置模块
             dependencies {
@@ -51,14 +61,14 @@ android {
                 }
             }
         }
-        server{
+        server {
             if (!project.ext.isLib) {
-                applicationId project.ext.applicationId+'.server'
+                applicationId project.ext.applicationId + '.server'
             }
-            manifestPlaceholders=[
-                    channel:"10087",   //渠道号
-                    verNum:"1",        //版本号
-                    app_name:"Gank服务版"   //app名
+            manifestPlaceholders = [
+                    channel : "10087",   //渠道号
+                    verNum  : "1",        //版本号
+                    app_name: "Gank服务版"   //app名
             ]
             dependencies {
                 if (!project.ext.isSettingDebug) {
@@ -68,7 +78,6 @@ android {
             }
         }
     }
-
 }
 
 dependencies {
@@ -77,14 +86,14 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    if(!project.ext.isNewsDebug) {
+    if (!project.ext.isNewsDebug) {
         compile project(':news')
     }
-//    compile project(':submit')
+    //    compile project(':submit')
     compile project(':web')
-//    if (!project.ext.isSettingDebug) {
-//        compile project(':settings')
-//    }
+    //    if (!project.ext.isSettingDebug) {
+    //        compile project(':settings')
+    //    }
     compile project(':advice')
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

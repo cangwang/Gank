@@ -49,6 +49,7 @@ public class NewPresenter extends BasePresenter<INewView>{
 
                     @Override
                     public void onNext(NewsEntity newsEntity) {
+                        Log.e(this.getClass().getSimpleName(),newsEntity.toString());
                         datas = newsEntity.getResults();
                         if (page == 1) {
                             getView().setAdapterData(datas);
@@ -59,6 +60,7 @@ public class NewPresenter extends BasePresenter<INewView>{
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.e(this.getClass().getSimpleName(),e.toString());
                         getView().refreshStatus(false);
                     }
 
