@@ -6,16 +6,12 @@ if(project.ext.isSettingDebug){
 }
 
 android {
-    compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
+    project.ext.setDefaultConfig android
 
     defaultConfig {
-        minSdkVersion project.ext.minSdkVersion
-        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        buildConfigField('boolean','base_debug','true')
         javaCompileOptions {
             annotationProcessorOptions {
@@ -28,9 +24,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    dataBinding{
-        enabled =true
     }
 
     sourceSets {

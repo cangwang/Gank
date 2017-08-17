@@ -11,7 +11,18 @@ project.ext {
     isSettingDebug = false;
     isNewsDebug = false;
 
-    //混淆
-//    minifyEnable = true
-//    shrinkResEnable = minifyEnable
+    setDefaultConfig = {
+        extension ->
+            extension.compileSdkVersion 25
+            extension.buildToolsVersion "25.0.2"
+            extension.defaultConfig {
+                minSdkVersion 14
+                targetSdkVersion 25
+
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+            }
+            extension.dataBinding{
+                enabled = true
+            }
+    }
 }

@@ -6,22 +6,19 @@ android {
         cang_wang {
             keyAlias 'cang_wang'
             keyPassword 'ling123456'
-            storeFile file('/Users/air/Desktop/Android/MyJob/Gank/cang_wang.jks')
+            storeFile file('../cang_wang.jks')
             storePassword 'ling123456'
         }
     }
-    compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
+    project.ext.setDefaultConfig android
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
         }
-        minSdkVersion project.ext.minSdkVersion
-        targetSdkVersion project.ext.targetSdkVersion
+
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
@@ -36,13 +33,11 @@ android {
         }
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.cang_wang
-            proguardFile '/Users/air/Desktop/Android/MyJob/Gank/client/proguard-rules.pro'
+//            proguardFile '/Users/air/Desktop/Android/MyJob/Gank/client/proguard-rules.pro'
         }
-    }
-    dataBinding {
-        enabled = true
     }
     productFlavors {
         client {
