@@ -13,16 +13,36 @@ project.ext {
 
     setDefaultConfig = {
         extension ->
-            extension.compileSdkVersion 25
-            extension.buildToolsVersion "25.0.2"
-            extension.defaultConfig {
-                minSdkVersion 14
-                targetSdkVersion 25
+            extension.android{
+                compileSdkVersion 25
+                buildToolsVersion "25.0.2"
+                defaultConfig {
+                    minSdkVersion 14
+                    targetSdkVersion 25
 
-                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                    javaCompileOptions {
+                        annotationProcessorOptions {
+                            arguments = [ moduleName : extension.getName() ]
+                        }
+                    }
+                }
+
+                dataBinding{
+                    enabled = true
+                }
             }
-            extension.dataBinding{
-                enabled = true
+            extension.dependencies{
+                compile fileTree(dir: 'libs', include: ['*.jar'])
+                annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
             }
     }
+    setDependencies = {
+        extension->
+            extension.dependencies{
+                compile fileTree(dir: 'libs', include: ['*.jar'])
+                annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+            }
+    }
+
 }

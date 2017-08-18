@@ -2,7 +2,7 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.library'
 
 android {
-    project.ext.setDefaultConfig android
+    project.ext.setDefaultConfig thisObject
 
     defaultConfig {
         versionCode 1

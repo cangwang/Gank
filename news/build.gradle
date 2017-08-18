@@ -6,19 +6,11 @@ if (project.ext.isNewsDebug) {
 }
 
 android {
-    compileSdkVersion project.ext.compileSdkVersion
-    buildToolsVersion project.ext.buildToolsVersion
-
-    project.ext.setDefaultConfig android
+    project.ext.setDefaultConfig project
     defaultConfig {
         versionCode 1
         versionName "1.0"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
-            }
-        }
     }
     buildTypes {
         release {
@@ -50,7 +42,5 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':flow')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

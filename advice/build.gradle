@@ -2,16 +2,11 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.library'
 
 android {
-    project.ext.setDefaultConfig android
+    project.ext.setDefaultConfig project
     defaultConfig {
         versionCode 1
         versionName "1.0"
         consumerProguardFiles "proguard-rules.pro"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
-            }
-        }
     }
     buildTypes {
         release {
@@ -22,7 +17,5 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':base')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

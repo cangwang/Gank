@@ -6,18 +6,14 @@ if(project.ext.isSettingDebug){
 }
 
 android {
-    project.ext.setDefaultConfig android
+    project.ext.setDefaultConfig project
 
     defaultConfig {
         versionCode 1
         versionName "1.0"
 
 //        buildConfigField('boolean','base_debug','true')
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
-            }
-        }
+
     }
     buildTypes {
         release {
@@ -33,17 +29,22 @@ android {
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
+                res.srcDirs = ['src/main/res']
                 resources {
                     //排除java/debug文件夹下的所有文件
-                    exclude 'src/debug/*'
+                    exclude '../src/debug/*'
                 }
             }
+        }
+
+    }
+    packagingOptions {
+        if (!project.ext.isSettingDebug) {
+            exclude 'src/debug/AndroidManifest.xml'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':base')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

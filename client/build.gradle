@@ -10,7 +10,8 @@ android {
             storePassword 'ling123456'
         }
     }
-    project.ext.setDefaultConfig android
+    project.ext.setDefaultConfig thisObject
+//    project.ext.setDependencies thisObject
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
@@ -75,6 +76,7 @@ android {
     }
 }
 
+
 dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -90,5 +92,5 @@ dependencies {
     //        compile project(':settings')
     //    }
     compile project(':advice')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

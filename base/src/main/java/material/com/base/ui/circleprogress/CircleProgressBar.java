@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -30,7 +31,7 @@ import material.com.base.R;
  * called before the animation is actually complete and support shadows on older
  * platforms.
  */
-public class CircleProgressBar extends ImageView {
+public class CircleProgressBar extends AppCompatImageView {
 
     private static final int KEY_SHADOW_COLOR = 0x1E000000;
     private static final int FILL_SHADOW_COLOR = 0x3D000000;
