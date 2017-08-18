@@ -29,12 +29,12 @@ android {
         debug {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro','../proguard-common-rules.pro'
         }
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro','../proguard-common-rules.pro'
             signingConfig signingConfigs.cang_wang
 //            proguardFile '/Users/air/Desktop/Android/MyJob/Gank/client/proguard-rules.pro'
         }

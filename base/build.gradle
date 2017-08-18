@@ -9,6 +9,7 @@ android {
         versionName "1.0"
 
         buildConfigField('boolean','base_debug','false')
+        consumerProguardFiles 'proguard-rules.pro'
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ moduleName : project.getName() ]
