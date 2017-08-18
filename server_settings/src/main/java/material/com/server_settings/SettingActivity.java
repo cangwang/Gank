@@ -28,7 +28,7 @@ import material.com.base.utils.ListDataSave;
  * 设置
  * Created by cangwang on 2017/4/1.
  */
-@Route(path = "/gank_setting_server/1")
+@Route(path = "/gank_setting/1")
 public class SettingActivity extends BaseActivity{
 
     private FlowLayout setLayout;

@@ -67,13 +67,13 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
      * 跳转到设置页面
      */
     public void navigationSettings(){
-        String path = "/gank_setting";
-        if (channel == 10086) {
-            path +="/1";
-        }else if (channel == 10087){
-            path +="_server/1";
-        }
-        ARouter.getInstance().build(path).navigation();
+//        String path = "/gank_setting";
+//        if (channel == 10086) {
+//            path +="/1";
+//        }else if (channel == 10087){
+//            path +="_server/1";
+//        }
+        ARouter.getInstance().build("/gank_setting/1").navigation();
     }
 
     @Override

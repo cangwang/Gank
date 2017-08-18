@@ -11,7 +11,6 @@ android {
         }
     }
     project.ext.setDefaultConfig thisObject
-//    project.ext.setDependencies thisObject
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
@@ -47,15 +46,6 @@ android {
                     verNum  : "1",       //版本号
                     app_name: "Gank"   //app名
             ]
-            //使用dependencies来区分配置模块
-            dependencies {
-                //包含提交模块
-                compile project(':submit')
-                if (!project.ext.isSettingDebug) {
-                    //包含用户设置模块
-                    compile project(':settings')
-                }
-            }
         }
         server {
             if (!project.ext.isLib) {
@@ -66,16 +56,9 @@ android {
                     verNum  : "1",        //版本号
                     app_name: "Gank服务版"   //app名
             ]
-            dependencies {
-                if (!project.ext.isSettingDebug) {
-                    //包含服务版设置模块
-                    compile project(':server_settings')
-                }
-            }
         }
     }
 }
-
 
 dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -88,9 +71,10 @@ dependencies {
     }
     //    compile project(':submit')
     compile project(':web')
-    //    if (!project.ext.isSettingDebug) {
-    //        compile project(':settings')
-    //    }
+        if (!project.ext.isSettingDebug) {
+            clientCompile project(':settings')
+            serverCompile project(':server_settings')
+        }
     compile project(':advice')
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }

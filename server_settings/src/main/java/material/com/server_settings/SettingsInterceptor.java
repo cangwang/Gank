@@ -23,7 +23,7 @@ import material.com.base.app.BaseApplication;
 /**
  * Created by zjl on 2017/8/11.
  */
-@Interceptor(priority = 6)
+@Interceptor(priority = 5)
 public class SettingsInterceptor implements IInterceptor{
     private Context context;
     private Postcard postcard;
@@ -38,7 +38,7 @@ public class SettingsInterceptor implements IInterceptor{
     public void process(Postcard postcard, InterceptorCallback callback) {
         this.postcard = postcard;
         this.callback = callback;
-        if (postcard.getPath().equals("/gank_setting_server/1")){
+        if (postcard.getPath().equals("/gank_setting/1")){
 //            if (!AndPermission.hasPermission(context,Manifest.permission.WRITE_SETTINGS)) {
             AndPermission.with(context)
                     .requestCode(101)
