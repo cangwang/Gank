@@ -18,6 +18,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import material.com.base.BaseAppInt;
 import material.com.base.app.BaseApplication;
+import material.com.base.impl.GetActImpl;
 import material.com.gank.BuildConfig;
 import material.com.top.PageConfig;
 
@@ -25,7 +26,7 @@ import material.com.top.PageConfig;
  * Created by cangwang on 2017/4/2.
  */
 
-public class GankApplication extends BaseApplication{
+public class GankApplication extends BaseApplication implements GetActImpl{
     private static final String TAG = "GankApplication";
     @Override
     public void onCreate() {
@@ -83,4 +84,8 @@ public class GankApplication extends BaseApplication{
         }
     }
 
+    @Override
+    public Activity getTopActivity(){
+        return context;
+    }
 }

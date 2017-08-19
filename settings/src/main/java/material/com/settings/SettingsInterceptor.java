@@ -21,6 +21,7 @@ import java.util.List;
 
 import material.com.base.BaseActivity;
 import material.com.base.app.BaseApplication;
+import material.com.base.impl.GetActImpl;
 
 /**
  * Created by zjl on 2017/8/11.
@@ -53,7 +54,7 @@ public class SettingsInterceptor implements IInterceptor{
                         @Override
                         public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
                             // 这里的对话框可以自定义，只要调用rationale.resume()就可以继续申请。
-                            AndPermission.rationaleDialog(BaseApplication.getTopActivity(), rationale)
+                            AndPermission.rationaleDialog(((GetActImpl)context).getTopActivity(), rationale)
                                     .show();
                         }
                     })
@@ -74,11 +75,11 @@ public class SettingsInterceptor implements IInterceptor{
 
     @PermissionNo(101)
     public void getCameraFail(@NonNull List<String> grantedPermissions){
-        if (AndPermission.hasAlwaysDeniedPermission(BaseApplication.getTopActivity(), grantedPermissions)) {
+        if (AndPermission.hasAlwaysDeniedPermission(((GetActImpl)context).getTopActivity(), grantedPermissions)) {
             // 第一种：用默认的提示语。
 //            AndPermission.defaultSettingDialog(BaseApplication.getTopActivity()).show();
             // 第三种：自定义dialog样式。
-            SettingService settingService = AndPermission.defineSettingDialog(BaseApplication.getTopActivity(), 400);
+            SettingService settingService = AndPermission.defineSettingDialog(((GetActImpl)context).getTopActivity(), 400);
 
             // 你的dialog点击了确定调用：
             settingService.execute();
@@ -96,7 +97,7 @@ public class SettingsInterceptor implements IInterceptor{
 
         @Override
         public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
-            if (AndPermission.hasAlwaysDeniedPermission(BaseApplication.getTopActivity(), deniedPermissions)) {
+            if (AndPermission.hasAlwaysDeniedPermission(((GetActImpl)context).getTopActivity(), deniedPermissions)) {
                 // 第一种：用默认的提示语。
                 AndPermission.defaultSettingDialog(context).show();
             }

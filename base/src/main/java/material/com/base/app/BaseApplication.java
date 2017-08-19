@@ -9,14 +9,14 @@ import android.os.Bundle;
  */
 
 public class BaseApplication extends Application{
-    private static Activity context;
+    public static Activity context;
     @Override
     public void onCreate() {
         super.onCreate();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle bundle) {
-                context = activity;
+
             }
 
             @Override
@@ -26,7 +26,7 @@ public class BaseApplication extends Application{
 
             @Override
             public void onActivityResumed(Activity activity) {
-
+                context = activity;
             }
 
             @Override
@@ -49,9 +49,5 @@ public class BaseApplication extends Application{
 
             }
         });
-    }
-
-    public static Activity getTopActivity(){
-        return context;
     }
 }

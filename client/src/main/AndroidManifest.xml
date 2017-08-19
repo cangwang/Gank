@@ -11,6 +11,7 @@
         android:supportsRtl="true">
         <meta-data android:name="verNum" android:value="${verNum}"/>
         <meta-data android:name="channel" android:value="${channel}"/>
+        <meta-data android:name="setting_info" android:value="${setting_info}"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="material.com.top.MAIN" />
