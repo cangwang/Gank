@@ -2,7 +2,7 @@ apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.library'
 
 android {
-    project.ext.setDefaultConfig thisObject
+    project.ext.setDefaultConfig project
 
     defaultConfig {
         versionCode 1
@@ -10,11 +10,6 @@ android {
 
         buildConfigField('boolean','base_debug','false')
         consumerProguardFiles 'proguard-rules.pro'
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
-            }
-        }
     }
     buildTypes {
         release {
