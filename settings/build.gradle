@@ -16,7 +16,7 @@ android {
 
     sourceSets {
         main {
-            if (project.description == "app") {
+            if (project.ext.isSettingDebug) {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {
