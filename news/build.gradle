@@ -1,12 +1,7 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-if (project.ext.isNewsDebug) {
-    apply plugin: 'com.android.application'
-}else {
-    apply plugin: 'com.android.library'
-}
 
+project.ext.setLibDefaultConfig project
 android {
-    project.ext.setDefaultConfig project
     defaultConfig {
         versionCode 1
         versionName "1.0"
@@ -21,7 +16,7 @@ android {
 
     sourceSets {
         main {
-            if (project.ext.isNewsDebug) {
+            if (project.description == "app") {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {

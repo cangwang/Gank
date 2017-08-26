@@ -1,6 +1,6 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-apply plugin: 'com.android.library'
 
+project.ext.setLibDefaultConfig project
 android {
     project.ext.setDefaultConfig project
     defaultConfig {

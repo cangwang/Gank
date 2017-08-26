@@ -1,12 +1,7 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-if(project.ext.isSettingDebug){
-    apply plugin: 'com.android.application'
-}else {
-    apply plugin: 'com.android.library'
-}
 
+project.ext.setLibDefaultConfig project
 android {
-    project.ext.setDefaultConfig project
     defaultConfig {
         versionCode 1
         versionName "1.0"

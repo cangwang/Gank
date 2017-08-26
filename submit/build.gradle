@@ -1,10 +1,8 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-apply plugin: 'com.android.library'
+project.ext.setLibDefaultConfig project
+
 apply plugin: 'com.jakewharton.butterknife'
-
 android {
-    project.ext.setDefaultConfig project
-
     defaultConfig {
         versionCode 1
         versionName "1.0"
@@ -19,6 +17,7 @@ android {
 }
 
 dependencies {
+    testCompile 'junit:junit:4.12'
     compile project(':base')
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

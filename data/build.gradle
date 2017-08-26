@@ -1,8 +1,7 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-apply plugin: 'com.android.library'
 
+project.ext.setLibDefaultConfig project
 android {
-    project.ext.setDefaultConfig project
     defaultConfig {
         versionCode 1
         versionName "1.0"
@@ -16,5 +15,5 @@ android {
 }
 
 dependencies {
-
+    compile project(':base')
 }

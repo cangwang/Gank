@@ -1,7 +1,8 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
 apply plugin: 'AndResGuard'
 
+project.ext.setAppDefaultConfig project
 android {
     signingConfigs {
         cang_wang {
@@ -11,7 +12,6 @@ android {
             storePassword 'ling123456'
         }
     }
-    project.ext.setDefaultConfig project
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId

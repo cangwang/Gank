@@ -1,19 +1,11 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-if(project.ext.isSettingDebug){
-    apply plugin: 'com.android.application'
-}else {
-    apply plugin: 'com.android.library'
-}
+project.ext.setLibDefaultConfig project
 
 android {
-    project.ext.setDefaultConfig project
-
     defaultConfig {
         versionCode 1
         versionName "1.0"
-
 //        buildConfigField('boolean','base_debug','true')
-
     }
     buildTypes {
         release {
@@ -24,7 +16,7 @@ android {
 
     sourceSets {
         main {
-            if (project.ext.isSettingDebug) {
+            if (project.description == "app") {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {

@@ -1,9 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 project.ext {
-    compileSdkVersion = 25
-    buildToolsVersion = "25.0.2"
-    minSdkVersion = 14
-    targetSdkVersion = 25
+    compileSdkVersion25 = 25
+    buildToolsVersion25 = "25.0.2"
+    minSdkVersion14 = 14
+    targetSdkVersion25 = 25
     applicationId = "material.com.gank"
 
     isDebug = false;
@@ -11,38 +11,56 @@ project.ext {
     isSettingDebug = false;
     isNewsDebug = false;
 
-    setDefaultConfig = {
-        extension ->
-            extension.android{
-                compileSdkVersion 25
-                buildToolsVersion "25.0.2"
-                defaultConfig {
-                    minSdkVersion 14
-                    targetSdkVersion 25
+    //设置App配置
+    setAppDefaultConfig = {
+        extension->
+            extension.apply plugin: 'com.android.application'
+            extension.description "app"
+            setAndroidConfig extension.android
+            setDependencies extension.dependencies
+    }
 
-                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-                    javaCompileOptions {
-                        annotationProcessorOptions {
-                            arguments = [ moduleName : extension.getName() ]
-                        }
+    //设置Lib配置
+    setLibDefaultConfig = {
+        extension ->
+            extension.apply plugin: 'com.android.library'
+            extension.description "lib"
+            setAndroidConfig extension.android
+            setDependencies extension.dependencies
+    }
+
+    setDefaultConfig = {
+        extension->
+            setAndroidConfig extension.android
+            setDependencies extension.dependencies
+    }
+
+    //设置Android配置
+    setAndroidConfig ={
+        extension->
+            extension.compileSdkVersion 25
+            extension.buildToolsVersion "25.0.2"
+            extension.defaultConfig {
+                minSdkVersion 14
+                targetSdkVersion 25
+
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                javaCompileOptions {
+                    annotationProcessorOptions {
+                        arguments = [ moduleName : extension.project.getName() ]
                     }
                 }
-
-                dataBinding{
-                    enabled = true
-                }
             }
-            extension.dependencies{
-                compile fileTree(dir: 'libs', include: ['*.jar'])
-                annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+
+            extension.dataBinding{
+                enabled = true
             }
     }
+
+    //设置依赖
     setDependencies = {
         extension->
-            extension.dependencies{
-                compile fileTree(dir: 'libs', include: ['*.jar'])
-                annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
-            }
+            extension.compile fileTree(dir: 'libs', include: ['*.jar'])
+            extension.annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
     }
-
 }
