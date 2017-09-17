@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/submit_type_android"
+        android:title="Android"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_ios"
+        android:title="iOS"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_rest"
+        android:title="休息视频"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_lucky"
+        android:title="福利"
+        app:showAsAction="never"/>
+    .<item
+        android:id="@+id/submit_type_resouce"
+        android:title="拓展资源"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_web"
+        android:title="前端"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_unknown"
+        android:title="瞎推荐"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/submit_type_app"
+        android:title="App"
+        app:showAsAction="never"/>
+</menu>
