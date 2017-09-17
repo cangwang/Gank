@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="AppWelcome" parent="AppTheme.Base">
+        <item name="android:windowBackground">@drawable/dream</item>
+    </style>
+
+</resources>
