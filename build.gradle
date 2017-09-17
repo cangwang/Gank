@@ -1,0 +1,47 @@
+apply from: "${rootProject.rootDir}/common_config.gradle"
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+    buildToolsVersion project.ext.buildToolsVersion
+
+    defaultConfig {
+        if (!project.ext.isLib) {
+            applicationId project.ext.applicationId
+        }
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding{
+        enabled =true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    if(!project.ext.isNewsDebug) {
+        compile project(':news')
+    }
+    compile project(':submit')
+    compile project(':web')
+    if (!project.ext.isSettingDebug) {
+        compile project(':settings')
+    }
+    compile project(':advice')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
+}
