@@ -12,14 +12,13 @@ android {
             storePassword 'ling123456'
         }
     }
+
     defaultConfig {
         if (!project.ext.isLib) {
             applicationId project.ext.applicationId
         }
-
         versionCode 1
         versionName "1.0"
-
     }
 
     buildTypes {
@@ -38,39 +37,52 @@ android {
     }
     productFlavors {
         client {
+            buildConfigField "String","advice_url","\"https://github.com/cangwang\""
             manifestPlaceholders = [
                     channel : "10086",  //渠道号
                     verNum  : "1",       //版本号
                     app_name: "Gank",   //app名
                     setting_info: "material.com.settings.SettingInfo" //设置数据文件
             ]
+            dependencies{
+                if (!project.ext.isSettingDebug) {
+                    debugCompile project(path: ':settings', configuration: "debug")
+                    releaseCompile project(path: ':settings', configuration: "release")
+                    debugCompile project(path: ':submit', configuration: "debug")
+                    releaseCompile project(path: ':submit', configuration: "release")
+                }
+            }
         }
         server {
             if (!project.ext.isLib) {
                 applicationId project.ext.applicationId + '.server' //appId
             }
+            buildConfigField "String","advice_url","\"https://github.com/cangwang/Gank\""
             manifestPlaceholders = [
                     channel : "10087",   //渠道号
                     verNum  : "1",        //版本号
                     app_name: "Gank服务版",   //app名
                     setting_info: "material.com.server_settings.ServerSettingInfo"  //设置数据文件
             ]
+//            project.dependencies{
+//                debugCompile project(path:':server_settings',configuration:"serverDebug")
+//                releaseCompile project(path:':server_settings',configuration:"serverRelease")
+//            }
         }
     }
+
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     if (!project.ext.isNewsDebug) {
-        compile project(':news')
+        debugCompile project(path:':news',configuration:"debug")
+        releaseCompile project(path:':news',configuration:"release")
     }
-    compile project(':web')
-        if (!project.ext.isSettingDebug) {
-            clientCompile project(':settings')
-            clientCompile project(':submit')
-            serverCompile project(':server_settings')
-        }
-    compile project(':advice')
+    debugCompile project(path:':web',configuration:"debug")
+    releaseCompile project(path:':web',configuration:"release")
+    debugCompile project(path:':advice',configuration:"debug")
+    releaseCompile project(path:':advice',configuration:"release")
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.1'
 }
 
