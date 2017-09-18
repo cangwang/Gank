@@ -26,6 +26,12 @@ project.ext {
             extension.apply plugin: 'com.android.library'
             extension.description "lib"
             setAndroidConfig extension.android
+            extension.android {
+                defaultConfig {
+                    defaultPublishConfig 'release'
+                    publishNonDefault true
+                }
+            }
             setDependencies extension.dependencies
     }
 
@@ -41,7 +47,6 @@ project.ext {
             extension.compileSdkVersion 25
             extension.buildToolsVersion "25.0.2"
             extension.defaultConfig {
-                minSdkVersion 14
                 targetSdkVersion 25
 
                 testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -51,9 +56,30 @@ project.ext {
                     }
                 }
             }
+            extension.buildTypes{
+                debug{
+                    extension.defaultConfig{minSdkVersion 21}
+                }
+                release{
+                    extension.defaultConfig{minSdkVersion 14}
+                }
+            }
 
             extension.dataBinding{
                 enabled = true
+            }
+            extension.project.tasks.whenTaskAdded { task ->
+                if (task.name.contains("lint")//不启动lint代码扫描潜在bug可以使用
+                        ||task.name.equals("clean")
+                        ||task.name.contains("Aidl") //项目中有用到aidl则不可以舍弃这个任务
+                        ||task.name.contains("mockableAndroidJar")//用不到测试的时候就可以先关闭
+                        ||task.name.contains("UnitTest")//用不到测试的时候就可以先关闭
+                        ||task.name.contains("AndroidTest")//用不到NDK和JNI的也关闭掉
+                        || task.name.contains("Ndk")
+                        || task.name.contains("Jni")
+                ) {
+                    task.enabled = false
+                }
             }
     }
 
