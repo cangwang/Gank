@@ -2,7 +2,6 @@ package material.com.base.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,12 +26,8 @@ public class ListDataSave {
     }
 
     public ListDataSave(Context mContext, String preferenceName,int type) {
-        if (Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
-            if (type == DEBUG) {
-                preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS | Context.MODE_WORLD_READABLE);
-            }else {
-                preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
-            }
+        if (type == DEBUG) {
+            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS | Context.MODE_WORLD_READABLE);
         }else {
             preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
         }

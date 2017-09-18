@@ -15,19 +15,6 @@ android {
     }
 
     sourceSets {
-        debug{
-            if (project.ext.isSettingDebug) {
-                manifest.srcFile 'src/debug/AndroidManifest.xml'
-                res.srcDirs = ['src/debug/res','src/main/res']
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                res.srcDirs = ['src/main/res']
-                resources {
-                    //排除java/debug文件夹下的所有文件
-                    exclude '../src/debug/*'
-                }
-            }
-        }
         main {
             if (project.ext.isSettingDebug) {
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
