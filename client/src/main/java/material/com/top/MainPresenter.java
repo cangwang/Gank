@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -31,7 +33,9 @@ public class MainPresenter extends BasePresenter<IMainView>{
 
     @Subscribe
     public void onEvent(SubmitStartEvent event){
-        replaceFm(context.getSupportFragmentManager(),PageConfig.SubmitFragment);
+//        replaceFm(context.getSupportFragmentManager(),PageConfig.SubmitFragment);
+        Fragment f = (Fragment) ARouter.getInstance().build("/gank_submit/submit").navigation();
+        replaceFm(context.getSupportFragmentManager(),f);
     }
 
     @Subscribe
@@ -44,7 +48,18 @@ public class MainPresenter extends BasePresenter<IMainView>{
     @Subscribe
     public void onEvent(NewsItemChangeEvent event){
         ImageLoader.clearCacheMemory(context.getApplication());
-        replaceFm(context.getSupportFragmentManager(),PageConfig.AllNewsFragment);
+        showNews();
+    }
+
+    public void showNews(){
+        Fragment f = (Fragment) ARouter.getInstance().build("/gank_news/all_news").navigation();
+        replaceFm(context.getSupportFragmentManager(),f);
+    }
+
+    public void replaceFm(FragmentManager fm ,Fragment f){
+        FragmentTransaction tr = fm.beginTransaction();
+        tr.replace(R.id.gank_frame,f);
+        tr.commitAllowingStateLoss();
     }
 
     public void replaceFm(FragmentManager fm,String className){

@@ -26,8 +26,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter,IMainView> imple
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fm = getSupportFragmentManager();
-        presenter.replaceFm(fm,PageConfig.AllNewsFragment);
+        presenter.showNews();
     }
 
     @Override

@@ -16,16 +16,16 @@ public class PageConfig {
         return pageTitles;
     }
 
-    private static final String NewFragment = "material.com.news.ui.NewFragment";
-    public static final String AllNewsFragment = "material.com.news.ui.AllNewsFragment";
-    public static final String SubmitFragment = "com.cangwang.submit.ui.SubmitFragment";
+//    private static final String NewFragment = "material.com.news.ui.NewFragment";
+//    public static final String AllNewsFragment = "material.com.news.ui.AllNewsFragment";
+//    public static final String SubmitFragment = "com.cangwang.submit.ui.SubmitFragment";
 
-    public static String[] fragmentNames = {
-            AllNewsFragment,
-            SubmitFragment,
-            NewFragment,
-            NewFragment
-    };
+//    public static String[] fragmentNames = {
+//            AllNewsFragment,
+//            SubmitFragment,
+//            NewFragment,
+//            NewFragment
+//    };
 
     private static final String NewsInit = "material.com.news.api.NewsInit";
 

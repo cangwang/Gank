@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import material.com.submit.R;
 import material.com.submit.api.SubmitService;
 import material.com.submit.model.SubmitResult;
@@ -37,7 +39,7 @@ import retrofit2.Retrofit;
 /**
  * Created by cangwang on 2017/3/30.
  */
-
+@Route(path = "/gank_submit/submit")
 public class SubmitFragment extends BaseFragment{
 
     private Toolbar mToolBar;

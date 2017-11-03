@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import material.com.base.BaseMvpFragment;
 import material.com.base.utils.AppMetaUtil;
 import material.com.news.R;
@@ -23,7 +25,7 @@ import material.com.news.presenter.AllNewsPresenter;
 /**
  * Created by zjl on 2017/3/30.
  */
-
+@Route(path="/gank_news/all_news")
 public class AllNewsFragment extends BaseMvpFragment<AllNewsPresenter,IAllNewView> implements IAllNewView{
 
     private ViewPager mViewPager;
