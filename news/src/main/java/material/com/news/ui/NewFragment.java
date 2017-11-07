@@ -15,6 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -37,7 +40,7 @@ import retrofit2.Retrofit;
 /**
  * Created by zjl on 2017/3/27.
  */
-
+@Route(path="/gank_news/new")
 public class NewFragment extends BaseFragment{
     private static final String TAG ="NewFragment";
     private View view;
@@ -49,9 +52,13 @@ public class NewFragment extends BaseFragment{
     private Retrofit retrofit;
     private int page=1;
 
+    @Autowired
+    public String sort;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ARouter.getInstance().inject(this);
         view = inflater.inflate(R.layout.news_fragment,container,false);
         return view;
     }

@@ -8,13 +8,13 @@ import android.support.v4.app.Fragment;
 
 public abstract class BaseFragment extends Fragment{
     private boolean HasLoadedOnce = false;
-    public String sort;
+//    public String sort;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Bundle bundle = getArguments();
-        sort = bundle.getString("sort");
+//        Bundle bundle = getArguments();
+//        sort = bundle.getString("sort");
         if (isVisibleToUser){
             loadData();
         }

@@ -45,10 +45,11 @@ public class AllNewsPresenter extends BasePresenter<IAllNewView>{
 
     public void setAdapter(){
         for(String item :pageTitles){
-            Fragment tab = new NewFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("sort",item);
-            tab.setArguments(bundle);
+//            Fragment tab = new NewFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("sort",item);
+//            tab.setArguments(bundle);
+            Fragment tab = (Fragment) ARouter.getInstance().build("/gank_news/new").withString("sort",item).navigation();
             pageFagments.add(tab);
         }
         pageTitles.add("Flow");
