@@ -2,7 +2,7 @@ package material.com.base.img
 
 import android.app.Application
 import android.content.Context
-import android.databinding.BindingAdapter
+//import android.databinding.BindingAdapter
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Looper
@@ -10,7 +10,6 @@ import android.support.annotation.DrawableRes
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.MemoryCategory
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.data.DataFetcher
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -28,17 +27,17 @@ import material.com.base.utils.NetworkUitls
 
 object ImageLoader {
 
-    @BindingAdapter("android:src")
+//    @BindingAdapter("android:src")
     fun setSrc(view: ImageView, bitmap: Bitmap) {
         view.setImageBitmap(bitmap)
     }
 
-    @BindingAdapter("android:src")
+//    @BindingAdapter("android:src")
     fun setSrc(view: ImageView, @DrawableRes resId: Int) {
         view.setImageResource(resId)
     }
 
-    @BindingAdapter("android:src")
+//    @BindingAdapter("android:src")
     fun setSrc(imageView: ImageView, url: String) {
         Glide.with(imageView.context)
                 .load(url)
@@ -47,7 +46,7 @@ object ImageLoader {
                 .into(imageView)
     }
 
-    @BindingAdapter("imageurl")
+//    @BindingAdapter("imageurl")
     fun loadImge(imageView: ImageView, url: String) {
         Glide.with(imageView.context)
                 .load(url)
@@ -56,31 +55,29 @@ object ImageLoader {
                 .into(imageView)
     }
 
-    @BindingAdapter(value = *arrayOf("imageurl", "holderDrawable", "errorDrawable"), requireAll = false)
-    @JvmStatic fun loadImge(imageView: ImageView, url: String?, holderDrawable: Drawable, errorDrawable: Drawable) {
-        if (NetworkUitls.isWifiConnected(imageView.context)) {
-            loadNormal(imageView, url, holderDrawable, errorDrawable)
-        } else {
-            loadCache(imageView, url, holderDrawable, errorDrawable)
-        }
-        //        if (url==null||url.equals("")){
-        //            imageView.setVisibility(View.GONE);
-        //            return;
-        //        }
-        //        Glide.get(imageView.getContext())
-        //                .setMemoryCategory(MemoryCategory.NORMAL);
-        //        Glide.with(imageView.getContext())
-        //                .load(url)
-        //                .thumbnail(0.5f)
-        //                .placeholder(holderDrawable)
-        //                .error(errorDrawable)
-        //                .diskCacheStrategy(DiskCacheStrategy.RESULT)
-        //                .crossFade()
-        //                .into(imageView)
-        //                .onLoadStarted(holderDrawable);
-
-
-    }
+//    @BindingAdapter(value = *arrayOf("imageurl", "holderDrawable", "errorDrawable"), requireAll = false)
+//    @JvmStatic fun loadImge(imageView: ImageView, url: String?, holderDrawable: Drawable, errorDrawable: Drawable) {
+//        if (NetworkUitls.isWifiConnected(imageView.context)) {
+//            loadNormal(imageView, url, holderDrawable, errorDrawable)
+//        } else {
+//            loadCache(imageView, url, holderDrawable, errorDrawable)
+//        }
+//        //        if (url==null||url.equals("")){
+//        //            imageView.setVisibility(View.GONE);
+//        //            return;
+//        //        }
+//        //        Glide.get(imageView.getContext())
+//        //                .setMemoryCategory(MemoryCategory.NORMAL);
+//        //        Glide.with(imageView.getContext())
+//        //                .load(url)
+//        //                .thumbnail(0.5f)
+//        //                .placeholder(holderDrawable)
+//        //                .error(errorDrawable)
+//        //                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+//        //                .crossFade()
+//        //                .into(imageView)
+//        //                .onLoadStarted(holderDrawable);
+//    }
 
     private fun loadNormal(imageView: ImageView, url: String?, holderDrawable: Drawable, errorDrawable: Drawable) {
         Glide.with(imageView.context)

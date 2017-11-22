@@ -5,12 +5,10 @@
         android:supportsRtl="true">
         <activity android:name=".SettingActivity"
             android:theme="@style/AppTheme.Base">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!--<action android:name="material.com.settings" />-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 

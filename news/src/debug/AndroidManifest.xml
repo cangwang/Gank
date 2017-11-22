@@ -3,12 +3,12 @@
         android:supportsRtl="true">
         <activity android:name=".NewsActivity"
             android:theme="@style/AppTheme.Base">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!--<action android:name="material.com.settings" />-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+                <!--&lt;!&ndash;<action android:name="material.com.settings" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<category android:name="android.intent.category.DEFAULT"/>&ndash;&gt;-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 </manifest>

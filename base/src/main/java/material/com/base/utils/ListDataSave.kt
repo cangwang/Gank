@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken
 import java.util.Vector
 
 /**
- * Created by air on 2017/4/2.
+ * Created by cangwang on 2017/4/2.
  */
 
 class ListDataSave {
@@ -21,11 +21,11 @@ class ListDataSave {
     }
 
     constructor(mContext: Context, preferenceName: String, type: Int) {
-        if (type == DEBUG) {
-            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS or Context.MODE_WORLD_READABLE)
-        } else {
+//        if (type == DEBUG) {
+//            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS or Context.MODE_WORLD_READABLE)
+//        } else {
             preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
-        }
+//        }
         if (preferences != null)
             editor = preferences!!.edit()
     }

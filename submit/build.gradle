@@ -25,16 +25,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled = true
-    }
+//    dataBinding{
+//        enabled = true
+//    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':base')
-    kapt 'com.alibaba:arouter-compiler:1.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':base')
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 kapt {

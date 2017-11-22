@@ -24,9 +24,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled = true
-    }
+//    dataBinding{
+//        enabled = true
+//    }
 }
 task copyTestClasses(type: Copy) {
     from "build/tmp/kotlin-classes/debugUnitTest"
@@ -41,10 +41,10 @@ kapt {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':base')
-    kapt 'com.alibaba:arouter-compiler:1.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':base')
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {
     mavenCentral()

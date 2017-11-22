@@ -70,7 +70,7 @@ class SplashView:FrameLayout{
                                              showBitmap: Bitmap?,
                                              defaultBitmapRes: Int?,
                                              listener: OnSplashViewActionListener?) {
-            val contentView = activity.window.decorView.findViewById(android.R.id.content) as ViewGroup
+            val contentView = activity.window.decorView.findViewById<ViewGroup>(android.R.id.content)
             if (null == contentView || 0 == contentView.childCount) {
                 throw IllegalStateException("You should call showSplashView() after setContentView() in Activity instance")
             }
@@ -203,8 +203,8 @@ class SplashView:FrameLayout{
                 dismissSplashView(false)
             }else{
                 setDuration(--duration)
+                ha.postDelayed(this, delayTime)
             }
-            ha.postDelayed(this, delayTime)
         }
     }
 

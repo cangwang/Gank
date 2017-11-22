@@ -55,19 +55,19 @@ class SubmitFragment : BaseFragment(), SubmitContact.View {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(view!!)
 
-        mUrlTxt = view!!.findViewById(R.id.submit_url_txt) as TextInputEditText
-        mDescTxt = view.findViewById(R.id.submit_desc_txt) as TextInputEditText
+        mUrlTxt = view.findViewById(R.id.submit_url_txt)
+        mDescTxt = view.findViewById(R.id.submit_desc_txt)
 
-        popMenutBtn = view.findViewById(R.id.submit_type_btn) as AppCompatButton
+        popMenutBtn = view.findViewById(R.id.submit_type_btn)
         popMenutBtn!!.setOnClickListener { showPopMenu(popMenutBtn!!) }
-        submitBtn = view.findViewById(R.id.submit_btn) as AppCompatButton
+        submitBtn = view.findViewById(R.id.submit_btn)
         submitBtn!!.setOnClickListener { submitGank() }
 
         presenter = SubmitPresenter(this)
     }
 
     private fun initToolbar(view: View) {
-        mToolBar = view.findViewById(R.id.submit_toolbar) as Toolbar
+        mToolBar = view.findViewById(R.id.submit_toolbar)
         mToolBar!!.title = "提交干货"
         (activity as AppCompatActivity).setSupportActionBar(mToolBar)
 

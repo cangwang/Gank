@@ -53,10 +53,10 @@ class AllNewsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         dataSave = ListDataSave(context, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
         pageTitles = dataSave!!.getDataList<String>("setting_data")
-        val toolbar = view!!.findViewById(R.id.news_toolbar) as Toolbar
+        val toolbar = view!!.findViewById<Toolbar>(R.id.news_toolbar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        tabLayout = view.findViewById(R.id.news_gank_tab) as TabLayout
-        mViewPager = view.findViewById(R.id.news_gank_view_pager) as ViewPager
+        tabLayout = view.findViewById(R.id.news_gank_tab)
+        mViewPager = view.findViewById(R.id.news_gank_view_pager)
         //        pageTitles = PageConfig.getPageTitles();
         //        try{
         //            for (int i=0;i<PageConfig.fragmentNames.length;i++){
@@ -106,7 +106,7 @@ class AllNewsFragment : BaseFragment() {
 
             }
         })
-        addNewBtn = view.findViewById(R.id.news_add_float_btn) as FloatingActionButton
+        addNewBtn = view.findViewById(R.id.news_add_float_btn)
         addNewBtn!!.setOnClickListener {
             //                EventBus.getDefault().post(new SubmitStartEvent());
 //            startActivity(Intent("com.cangwang.submit"));
