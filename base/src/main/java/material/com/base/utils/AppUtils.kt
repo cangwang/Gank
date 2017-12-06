@@ -1,11 +1,16 @@
 package material.com.base.utils
 
 import android.app.ActivityManager
+import android.app.usage.UsageStatsManager
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import material.com.base.bean.TaskBean
 import java.io.*
+import java.util.*
 
 /**
  * Created by cangwang on 2017/11/9.
@@ -75,7 +80,7 @@ object AppUtils{
     }
 
     /**
-     * 获取所有进程信息（5.0~5.1）
+     * 获取所有进程信息（5.0以前）
      */
     fun getTaskInfos(context:Context):List<TaskBean>?{
         val activityManager:ActivityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
@@ -111,6 +116,43 @@ object AppUtils{
             }
         }catch (e:PackageManager.NameNotFoundException){
             e.printStackTrace()
+        }
+        return list
+    }
+
+    /**
+     * 获取所有进程信息（5.0以后）
+     */
+    fun getTaskInfosL(context:Context):List<TaskBean>?{
+        val list = ArrayList<TaskBean>()
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            val packageManager:PackageManager = context.packageManager
+            val usm = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+            val calendar = Calendar.getInstance()
+            val endTime = calendar.timeInMillis
+            calendar.add(Calendar.YEAR, -1)
+            val startTime = calendar.timeInMillis
+            val usageStatsList = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startTime, endTime)
+            for(usage in usageStatsList){
+                try {
+                    val bean = TaskBean()
+                    val app = packageManager.getPackageInfo(usage.packageName, 0).applicationInfo
+                    bean.pakcageName = usage.packageName
+                    bean.processName = app.processName
+                    bean.pInfo = packageManager.getPackageInfo(bean.processName, 0)
+                    bean.appName = app.loadLabel(packageManager).toString() //app名
+                    bean.drawable = app.loadIcon(packageManager)    //app图标
+                    //系统应用
+                    if ((app.flags and ApplicationInfo.FLAG_SYSTEM) > 0) {
+                        bean.isSystem = true
+                    } else {
+                        bean.isUser = true
+                    }
+                    list.add(bean)
+                }catch (e:Exception){
+                    e.printStackTrace()
+                }
+            }
         }
         return list
     }
@@ -163,6 +205,40 @@ object AppUtils{
             }
         }
         return processName
+    }
+
+    /**
+     * 打开指定包名的App
+     */
+    fun openSpecifiedApp(context:Context,packageName:String){
+        val manager = context.packageManager
+        val lauchIntentForPackage = manager.getLaunchIntentForPackage(packageName)
+        context.startActivity(lauchIntentForPackage)
+    }
+
+    /**
+     * 当前app处于前台还是后台
+     */
+    fun isAppForground(context: Context,packageName:String):Boolean{
+        val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        var task = am.getRunningTasks(1)
+        if(!task.isEmpty()){
+            val top = task.get(0).topActivity
+            if (top.packageName.equals(context.packageName)){
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
+     * 打开指定包名的App应用信息界面
+     */
+    fun showAppInfo(context: Context,packageName:String){
+        val intent = Intent()
+        intent.action = "android.settings.APPLICATION_DETAILS_SETTINGS"
+        intent.data = Uri.parse("package:" + packageName)
+        context.startActivity(intent)
     }
 
 }

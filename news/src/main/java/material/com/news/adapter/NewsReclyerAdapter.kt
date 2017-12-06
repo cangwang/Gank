@@ -55,6 +55,7 @@ class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<Re
                 ImageLoader.loadImge(holder.imageView,n.url)
             holder.title.setText(n.desc)
             holder.content.setText(n.who)
+            holder.itemView.setOnClickListener { n.clickToWeb(it) }
         }
     }
 
