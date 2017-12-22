@@ -55,10 +55,15 @@ public class NewFragment extends BaseFragment{
     @Autowired
     public String sort;
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        ARouter.getInstance().inject(this);
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ARouter.getInstance().inject(this);
         view = inflater.inflate(R.layout.news_fragment,container,false);
         return view;
     }

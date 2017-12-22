@@ -11,7 +11,7 @@ import material.com.base.BaseAppInt;
  * Created by cangwang on 2017/7/25.
  */
 
-public class NewsInit implements IProvider{
+public class NewsInit implements BaseAppInt, IProvider{
 
     @Override
     public void init(Context context) {
