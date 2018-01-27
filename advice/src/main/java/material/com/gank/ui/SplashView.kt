@@ -34,6 +34,7 @@ import java.net.URL
 class SplashView:FrameLayout{
     var splashImageView:ImageView?=null
     var skipButton:TextView?=null
+
     companion object {
         @JvmStatic val IMG_URL: String = "splash_img_rul"
         @JvmStatic val ACT_URL: String = "splash_act_rul"
@@ -42,6 +43,7 @@ class SplashView:FrameLayout{
         @JvmStatic val skipButtonAMarginInDip = 16f
         @JvmStatic val delayTime:Long = 1000
         @JvmStatic var IMAG_PATH:String?=null
+        var contentView:ViewGroup?=null
 
         /**
          * static method, show splashView on above of the activity
@@ -70,8 +72,8 @@ class SplashView:FrameLayout{
                                              showBitmap: Bitmap?,
                                              defaultBitmapRes: Int?,
                                              listener: OnSplashViewActionListener?) {
-            val contentView = activity.window.decorView.findViewById(android.R.id.content) as ViewGroup
-            if (null == contentView || 0 == contentView.childCount) {
+            contentView = activity.window.decorView.findViewById(android.R.id.content)
+            if (null == contentView || 0 == contentView!!.childCount) {
                 throw IllegalStateException("You should call showSplashView() after setContentView() in Activity instance")
             }
             IMAG_PATH = activity.filesDir.absolutePath.toString() + "/splash_img.jpg"
@@ -110,7 +112,7 @@ class SplashView:FrameLayout{
                     actionBar.hide()
                 }
             }
-            contentView.addView(splashView, param)
+            contentView!!.addView(splashView, param)
         }
 
         @JvmStatic fun simpleShowSplashView(activity:Activity){

@@ -38,25 +38,26 @@ class AllNewsFragment : BaseFragment() {
     private var pageTitles: List<String> = Vector()
     private var tabLayout: TabLayout? = null
     private var addNewBtn: FloatingActionButton? = null
+    private var toolbar:Toolbar ?=null
 
     private var v: View? = null
 
     private var dataSave: ListDataSave? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater!!.inflate(R.layout.news_all_fragment, container, false)
         setHasOptionsMenu(true)
         return v
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dataSave = ListDataSave(context, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view!!, savedInstanceState)
+        dataSave = ListDataSave(context!!, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
         pageTitles = dataSave!!.getDataList<String>("setting_data")
-        val toolbar = view!!.findViewById(R.id.news_toolbar) as Toolbar
+        toolbar = view!!.findViewById(R.id.news_toolbar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        tabLayout = view.findViewById(R.id.news_gank_tab) as TabLayout
-        mViewPager = view.findViewById(R.id.news_gank_view_pager) as ViewPager
+        tabLayout = view.findViewById(R.id.news_gank_tab)
+        mViewPager = view.findViewById(R.id.news_gank_view_pager)
         //        pageTitles = PageConfig.getPageTitles();
         //        try{
         //            for (int i=0;i<PageConfig.fragmentNames.length;i++){
@@ -106,7 +107,7 @@ class AllNewsFragment : BaseFragment() {
 
             }
         })
-        addNewBtn = view.findViewById(R.id.news_add_float_btn) as FloatingActionButton
+        addNewBtn = view.findViewById(R.id.news_add_float_btn)
         addNewBtn!!.setOnClickListener {
             //                EventBus.getDefault().post(new SubmitStartEvent());
 //            startActivity(Intent("com.cangwang.submit"));

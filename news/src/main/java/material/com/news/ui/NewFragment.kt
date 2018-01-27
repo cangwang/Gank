@@ -46,24 +46,25 @@ class NewFragment : BaseFragment() {
     private var retrofit: Retrofit? = null
     private var page = 1
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater!!.inflate(R.layout.news_fragment, container, false)
         return v
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mSwipeRefreshlayout = view!!.findViewById(R.id.news_swipe_refresh) as SwipeRefreshLayout
+        mSwipeRefreshlayout = view!!.findViewById(R.id.news_swipe_refresh)
         mSwipeRefreshlayout!!.setColorSchemeResources(R.color.common_pink_5, R.color.common_light_green_2, R.color.commen_blue_3)
         mSwipeRefreshlayout!!.setOnRefreshListener {
             page = 1
             loadData()
         }
-        mRecyclerView = view.findViewById(R.id.news_recyclerview) as RecyclerView
+        mRecyclerView = view.findViewById(R.id.news_recyclerview)
         val layoutManager = LinearLayoutManager(activity)
         mRecyclerView!!.layoutManager = layoutManager
         mRecyclerView!!.setHasFixedSize(true)
-        adapter = NewsReclyerAdapter(activity)
+        adapter = NewsReclyerAdapter(activity!!)
         mRecyclerView!!.adapter = adapter
         mRecyclerView!!.itemAnimator = DefaultItemAnimator()
         mRecyclerView!!.addOnScrollListener(object : RecyclerView.OnScrollListener() {

@@ -56,10 +56,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':base')
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':base')
     kapt 'com.alibaba:arouter-compiler:1.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 kapt {

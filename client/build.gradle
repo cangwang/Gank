@@ -34,6 +34,8 @@ android {
     dataBinding{
         enabled =true
     }
+    compileOptions {
+    }
 }
 
 kapt {
@@ -44,19 +46,19 @@ kapt {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    if(!project.ext.isNewsDebug) {
-        compile project(':news')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    if (!project.ext.isNewsDebug) {
+        api project(':news')
     }
-    compile project(':submit')
-    compile project(':web')
+    api project(':submit')
+    api project(':web')
     if (!project.ext.isSettingDebug) {
-        compile project(':settings')
+        api project(':settings')
     }
-    compile project(':advice')
-    kapt 'com.alibaba:arouter-compiler:1.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    kapt 'com.android.databinding:compiler:2.3.0'
+    api project(':advice')
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    kapt 'com.android.databinding:compiler:3.0.0'
 }
 repositories {
     mavenCentral()

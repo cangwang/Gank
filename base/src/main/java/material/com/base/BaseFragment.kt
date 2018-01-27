@@ -14,7 +14,7 @@ abstract class BaseFragment : Fragment() {
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         val bundle = arguments
-        sort = bundle.getString("sort")
+        sort = bundle!!.getString("sort")
         if (isVisibleToUser) {
             loadData()
         }

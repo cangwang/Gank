@@ -20,7 +20,7 @@ object NetworkUitls {
     fun isWifiConnected(context: Context): Boolean {
         val cm = context
                 .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm != null && cm.activeNetworkInfo != null
+        return  cm.activeNetworkInfo != null
                 && cm.activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI
     }
 }

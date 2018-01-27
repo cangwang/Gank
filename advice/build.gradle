@@ -1,6 +1,8 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
@@ -41,10 +43,10 @@ kapt {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':base')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':base')
     kapt 'com.alibaba:arouter-compiler:1.1.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {
     mavenCentral()

@@ -59,11 +59,11 @@ kapt {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':base')
-    kapt 'com.alibaba:arouter-compiler:1.1.1'
-    kapt 'com.android.databinding:compiler:2.3.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':base')
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    kapt 'com.android.databinding:compiler:3.0.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {
     mavenCentral()
