@@ -55,13 +55,18 @@ public class GankApplication extends BaseApplication implements GetActImpl{
             public void accept(@NonNull String init) throws Exception {
                 try {
                     Class<?> clazz = Class.forName(init);
-                    BaseAppInt moudleInit = (BaseAppInt) clazz.newInstance();
-                    moudleInit.onInitSpeed(GankApplication.this);
+                    Object in = clazz.newInstance();
+                    if (in instanceof BaseAppInt){
+                        BaseAppInt moduleInit = (BaseAppInt) in;
+                        moduleInit.onInitSpeed(GankApplication.this);
+                    }
                 }catch (ClassNotFoundException e){
                     Log.e(TAG,"error="+e.toString());
                 }catch (IllegalAccessException e){
                     Log.e(TAG,"error="+e.toString());
                 }catch (InstantiationException e){
+                    Log.e(TAG,"error="+e.toString());
+                }catch (Exception e){
                     Log.e(TAG,"error="+e.toString());
                 }
             }
