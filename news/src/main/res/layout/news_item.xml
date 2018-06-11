@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-        <variable
-            name="handler"
-            type="material.com.news.handler.NewsEventHandler"/>
-        <variable
-            name="news"
-            type="material.com.news.model.NewsItem"/>
-    </data>
-
-    <RelativeLayout
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{news::clickToWeb}"
         >
         <ImageView
             android:id="@+id/news_recyle_img"
@@ -23,10 +12,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginLeft="2dp"
             android:clickable="true"
-            android:visibility="@{news.getHasImage()}"
-            app:imageurl="@{news.images[0]}"
-            app:holderDrawable="@{@drawable/ic_launcher}"
-            app:errorDrawable="@{@drawable/ic_launcher}"/>
+            />
         <TextView
             android:id="@+id/news_recyle_title"
             android:layout_toRightOf="@+id/news_recyle_img"
@@ -36,7 +22,7 @@
             android:layout_margin="5dp"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@{news.desc}"/>
+            />
         <TextView
             android:id="@+id/news_recyle_sub_title"
             android:layout_width="wrap_content"
@@ -46,14 +32,5 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_below="@+id/news_recyle_title"
-            android:textSize="12sp"
-            android:text="@{news.who}"/>
-        <!--<Button-->
-            <!--android:id="@+id/news_btn"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/news_recyle_sub_title"-->
-            <!--android:layout_toRightOf="@+id/news_recyle_img"-->
-            <!--android:onClick="@{()->handler.clickToWeb(news.url)}"/>-->
-    </RelativeLayout>
-</layout>
+            android:textSize="12sp" />
+</RelativeLayout>

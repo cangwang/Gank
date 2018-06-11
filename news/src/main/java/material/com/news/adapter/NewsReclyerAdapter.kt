@@ -1,21 +1,15 @@
 package material.com.news.adapter
 
 import android.content.Context
-import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 
-import android.text.Layout
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-
-import java.util.ArrayList
-
-import material.com.news.BR
+import com.bumptech.glide.Glide
+import material.com.base.img.ImageLoader
 import material.com.news.R
 import material.com.news.holder.FooterHolder
 import material.com.news.holder.NewsHolder
-import material.com.news.databinding.NewsItemBinding
 import material.com.news.model.NewsItem
 
 /**
@@ -44,18 +38,23 @@ class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<Re
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is NewsHolder) {
             val data = datas!![position]
-            holder.binding!!.setVariable(BR.news, data)
-            holder.binding!!.executePendingBindings()
+            if(data.images !=null && data.images!!.isNotEmpty() && !data.images!![0].isNullOrEmpty())
+                ImageLoader.loadImge(holder.img,data.images!![0])
+            holder.title.text = data.desc
+            holder.sub_title.text = data.who
+            holder.itemView.setOnClickListener{
+                data.clickToWeb(holder.itemView)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == TYPE_ITEM) {
-            val binding = DataBindingUtil.inflate<NewsItemBinding>(LayoutInflater.from(context), R.layout.news_item, parent, false)
-            return NewsHolder(binding)
+            val view = LayoutInflater.from(context).inflate(R.layout.news_item, parent, false)
+            return NewsHolder(view)
         } else {
-            val converView = LayoutInflater.from(parent.context).inflate(R.layout.news_footer, parent, false)
-            return FooterHolder(converView)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.news_footer, parent, false)
+            return FooterHolder(view)
         }
     }
 

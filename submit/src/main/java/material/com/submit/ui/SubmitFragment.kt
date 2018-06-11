@@ -47,15 +47,15 @@ class SubmitFragment : BaseFragment(), SubmitContact.View {
     private var popMenutBtn: AppCompatButton? = null
     private var submitBtn: AppCompatButton? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.submit_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.submit_fragment, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar(view!!)
+        initToolbar(view)
 
-        mUrlTxt = view!!.findViewById(R.id.submit_url_txt) as TextInputEditText
+        mUrlTxt = view.findViewById(R.id.submit_url_txt) as TextInputEditText
         mDescTxt = view.findViewById(R.id.submit_desc_txt) as TextInputEditText
 
         popMenutBtn = view.findViewById(R.id.submit_type_btn) as AppCompatButton
@@ -71,7 +71,7 @@ class SubmitFragment : BaseFragment(), SubmitContact.View {
         mToolBar!!.title = "提交干货"
         (activity as AppCompatActivity).setSupportActionBar(mToolBar)
 
-        mToolBar!!.setNavigationOnClickListener { activity.finish() }
+        mToolBar!!.setNavigationOnClickListener { activity!!.finish() }
         mActionBar = (activity as AppCompatActivity).supportActionBar
         mActionBar!!.setHomeButtonEnabled(true)
         mActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -80,7 +80,7 @@ class SubmitFragment : BaseFragment(), SubmitContact.View {
     }
 
     fun showPopMenu(btn: AppCompatButton) {
-        val menu = PopupMenu(activity, btn)
+        val menu = PopupMenu(activity!!, btn)
         menu.menuInflater.inflate(R.menu.menu_submit_type, menu.menu)
         menu.setOnMenuItemClickListener { item ->
             btn.text = item.title

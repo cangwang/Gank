@@ -26,9 +26,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled = true
-    }
 }
 task copyTestClasses(type: Copy) {
     from "build/tmp/kotlin-classes/debugUnitTest"

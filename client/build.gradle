@@ -31,9 +31,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled =true
-    }
     compileOptions {
     }
 }
@@ -58,7 +55,6 @@ dependencies {
     api project(':advice')
     kapt 'com.alibaba:arouter-compiler:1.1.4'
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    kapt 'com.android.databinding:compiler:3.0.0'
 }
 repositories {
     mavenCentral()

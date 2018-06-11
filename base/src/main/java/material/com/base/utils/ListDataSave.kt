@@ -21,11 +21,11 @@ class ListDataSave {
     }
 
     constructor(mContext: Context, preferenceName: String, type: Int) {
-        if (type == DEBUG) {
-            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS or Context.MODE_WORLD_READABLE)
-        } else {
+//        if (type == DEBUG) {  //彻底被废弃了
+//            preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_MULTI_PROCESS or Context.MODE_WORLD_READABLE)
+//        } else {
             preferences = mContext.getSharedPreferences(preferenceName, Context.MODE_PRIVATE)
-        }
+//        }
         if (preferences != null)
             editor = preferences!!.edit()
     }

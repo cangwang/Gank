@@ -18,6 +18,7 @@ import android.graphics.RectF
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.support.annotation.IntDef
+import android.support.annotation.LongDef
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -324,7 +325,7 @@ class MaterialProgressDrawable(context: Context, private val mAnimExcutor: View)
     }
 
     @Retention(RetentionPolicy.CLASS)
-    @IntDef(LARGE.toLong(), DEFAULT.toLong())
+    @LongDef(LARGE.toLong(), DEFAULT.toLong())
     annotation class ProgressDrawableSize
 
     private class Ring(d:Drawable,private val mCallback: Drawable.Callback) {

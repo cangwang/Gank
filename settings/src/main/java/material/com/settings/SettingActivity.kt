@@ -47,7 +47,7 @@ class SettingActivity : BaseActivity() {
         initToolbar()
         dataSave = ListDataSave(this, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
         setData = dataSave!!.getDataList<String>("setting_data").toMutableList()
-        setLayout = findViewById(R.id.settings_set_flow) as FlowLayout
+        setLayout = findViewById(R.id.settings_set_flow)
         allData = SettingConfig.unSetDats
         for (item in allData) {
             addUnsetItem(setLayout!!, item)
@@ -56,7 +56,7 @@ class SettingActivity : BaseActivity() {
 
 
     private fun initToolbar() {
-        mToolBar = findViewById(R.id.settings_toolbar) as Toolbar
+        mToolBar = findViewById(R.id.settings_toolbar)
         mToolBar!!.title = "设置页面"
         setSupportActionBar(mToolBar)
 

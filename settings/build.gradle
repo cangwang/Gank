@@ -5,6 +5,7 @@ if(project.ext.isSettingDebug){
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion project.ext.compileSdkVersion
@@ -39,6 +40,7 @@ android {
             if (project.ext.isSettingDebug) {
                 print("isSettingDebug ="+project.ext.isSettingDebug)
                 manifest.srcFile 'src/debug/AndroidManifest.xml'
+
                 res.srcDirs = ['src/debug/res','src/main/res']
             } else {
                 print("isSettingDebug ="+project.ext.isSettingDebug)

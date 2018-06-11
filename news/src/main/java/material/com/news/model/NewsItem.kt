@@ -1,7 +1,5 @@
 package material.com.news.model
 
-import android.content.Intent
-import android.net.Uri
 import android.view.View
 
 import com.alibaba.android.arouter.launcher.ARouter
@@ -25,10 +23,6 @@ class NewsItem(var _id: String, var createdAt: String, var desc: String, var ima
     }
 
     fun clickToWeb(view: View) {
-//        var intent = Intent("material.com.web.Web");
-//        intent.putExtra("url",url);
-//        intent.putExtra("title",desc);
-//        view.getContext().startActivity(intent);
         ARouter.getInstance().build("/gank_web/1")
                 .withString("url", url)
                 .withString("title", desc)
@@ -38,9 +32,4 @@ class NewsItem(var _id: String, var createdAt: String, var desc: String, var ima
             EventBus.getDefault().post(event)
         }
     }
-
-    //    public int isHasImage(){
-    //        return (images!=null && !images[0].equals(""))?View.VISIBLE:View.GONE;
-    //    }
-
 }

@@ -6,10 +6,10 @@ project.ext {
     targetSdkVersion = 26
     applicationId = "material.com.gank"
 
-    isDebug = false;
-    isLib = false;
-    isSettingDebug = false;
-    isNewsDebug = false;
+    isDebug = false
+    isLib = false
+    isSettingDebug = false
+    isNewsDebug = false
 
     //混淆
 //    minifyEnable = true
