@@ -11,7 +11,7 @@ class ViewPagerAdapter : FragmentPagerAdapter {
     private var titles: List<String> ?=null
     private var fragmentList: List<Fragment>?=null
 
-    constructor(fm: FragmentManager) : super(fm) {}
+    constructor(fm: FragmentManager) : super(fm)
 
     constructor(fm: FragmentManager, lf: List<Fragment>, titles: List<String>) : super(fm) {
         this.titles = titles

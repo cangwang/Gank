@@ -2,6 +2,7 @@ package material.com.gank.ui
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
@@ -67,11 +68,12 @@ class SplashView:FrameLayout{
          *                          if null == defaultBitmapRes, then will not show the splashView
          * @param listener  splash view listener contains onImageClick and onDismiss
          */
+        @SuppressLint("RestrictedApi")
         @JvmStatic fun showSplashView(activity: Activity,
-                                             durationTime: Int?,
-                                             showBitmap: Bitmap?,
-                                             defaultBitmapRes: Int?,
-                                             listener: OnSplashViewActionListener?) {
+                                      durationTime: Int?,
+                                      showBitmap: Bitmap?,
+                                      defaultBitmapRes: Int?,
+                                      listener: OnSplashViewActionListener?) {
             contentView = activity.window.decorView.findViewById(android.R.id.content)
             if (null == contentView || 0 == contentView!!.childCount) {
                 throw IllegalStateException("You should call showSplashView() after setContentView() in Activity instance")
@@ -198,15 +200,14 @@ class SplashView:FrameLayout{
         fun onSplashViewDismiss(initiativeDismiss:Boolean)
     }
 
-    var ha = object :Handler(){}
     var timerRunnable = object:Runnable {
         override fun run() {
-            if (0==duration){
+            if (0 == duration){
                 dismissSplashView(false)
             }else{
                 setDuration(--duration)
+                postDelayed(this, delayTime)
             }
-            ha.postDelayed(this, delayTime)
         }
     }
 
@@ -255,7 +256,7 @@ class SplashView:FrameLayout{
         addView(skipButton,skipButtonLayoutParams)
         skipButton!!.setOnClickListener { dismissSplashView(true) }
         setDuration(duration)
-        ha.postDelayed(timerRunnable, delayTime)
+        postDelayed(timerRunnable, delayTime)
     }
 
     private fun setImgUrl(imgUrl:String){
@@ -281,7 +282,7 @@ class SplashView:FrameLayout{
     private fun dismissSplashView(initiativeDismiss: Boolean) {
         if (null != mOnSplashViewActionListener) mOnSplashViewActionListener!!.onSplashViewDismiss(initiativeDismiss)
 
-        ha.removeCallbacks(timerRunnable)
+        removeCallbacks(timerRunnable)
         if(this.parent !=null) {
             val parent = this.parent as ViewGroup
             if (null != parent) {
@@ -317,14 +318,14 @@ class SplashView:FrameLayout{
     }
 
     private fun showSystemUi() {
-        mActivity!!.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        mActivity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         if (mActivity is AppCompatActivity) {
             val supportActionBar = (mActivity as AppCompatActivity).supportActionBar
             if (null != supportActionBar) {
                 if (isActionBarShowing) supportActionBar.show()
             }
         } else if (mActivity is Activity) {
-            val actionBar = mActivity!!.getActionBar()
+            val actionBar = mActivity!!.actionBar
             if (null != actionBar) {
                 if (isActionBarShowing) actionBar.show()
             }

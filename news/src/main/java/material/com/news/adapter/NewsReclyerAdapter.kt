@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import material.com.base.img.ImageLoader
 import material.com.news.R
 import material.com.news.holder.FooterHolder
@@ -17,7 +16,7 @@ import material.com.news.model.NewsItem
  */
 class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var datas: MutableList<NewsItem>? = mutableListOf()
+    private var datas: MutableList<NewsItem> = mutableListOf()
 
     fun setDatas(datas: MutableList<NewsItem>?) {
         if (datas != null)
@@ -27,17 +26,17 @@ class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<Re
 
     fun addDatas(data: List<NewsItem>?) {
         if (data != null)
-            datas!!.addAll(data)
+            datas.addAll(data)
         notifyDataSetChanged()
     }
 
     fun clearData() {
-        datas = null
+        datas.clear()
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is NewsHolder) {
-            val data = datas!![position]
+            val data = datas[position]
             if(data.images !=null && data.images!!.isNotEmpty() && !data.images!![0].isNullOrEmpty())
                 ImageLoader.loadImge(holder.img,data.images!![0])
             holder.title.text = data.desc
@@ -49,12 +48,12 @@ class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<Re
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == TYPE_ITEM) {
+        return if (viewType == TYPE_ITEM) {
             val view = LayoutInflater.from(context).inflate(R.layout.news_item, parent, false)
-            return NewsHolder(view)
+            NewsHolder(view)
         } else {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.news_footer, parent, false)
-            return FooterHolder(view)
+            FooterHolder(view)
         }
     }
 
@@ -67,10 +66,10 @@ class NewsReclyerAdapter(private val context: Context) : RecyclerView.Adapter<Re
     }
 
     override fun getItemCount(): Int {
-        if (datas!!.size == 0) {
-            return datas!!.size
+        return if (datas.size == 0) {
+            datas.size
         } else {
-            return datas!!.size + 1
+            datas.size + 1
         }
     }
 

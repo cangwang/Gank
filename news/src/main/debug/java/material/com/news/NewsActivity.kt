@@ -1,11 +1,9 @@
 package material.com.news
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.util.Log
 import android.widget.Toast
 
@@ -77,9 +75,9 @@ class NewsActivity : BaseActivity() {
     private fun getDataFromSF() {
         try {
             val share = ListDataSave(getTargetContext("material.com.settings"), "gank",
-                    if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+                    ListDataSave.DEBUG)
             val dataSave = ListDataSave(this, "gank",
-                    if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+                    ListDataSave.DEBUG)
             Log.d("NewsActivity", share.getDataList<Any>("setting_data").toString())
             dataSave.setDataList("setting_data", share.getDataList<Any>("setting_data"))
         } catch (e: PackageManager.NameNotFoundException) {

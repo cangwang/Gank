@@ -1,5 +1,5 @@
 apply from: "${rootProject.rootDir}/common_config.gradle"
-if(project.ext.isSettingDebug){
+if(isSettingDebug){
     apply plugin: 'com.android.application'
 }else {
     apply plugin: 'com.android.library'
@@ -37,21 +37,21 @@ android {
 
     sourceSets {
         main {
-            if (project.ext.isSettingDebug) {
+            if (isSettingDebug.toBoolean()) {
                 print("isSettingDebug ="+project.ext.isSettingDebug)
-                manifest.srcFile 'src/debug/AndroidManifest.xml'
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
 
-                res.srcDirs = ['src/debug/res','src/main/res']
+                res.srcDirs = ['src/main/debug/res','src/main/res']
             } else {
                 print("isSettingDebug ="+project.ext.isSettingDebug)
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java{
-                    srcDir 'src/main/java'
+                    srcDirs 'src/main/java'
                 }
-//                resources {
-//                    //排除java/debug文件夹下的所有文件
-//                    exclude 'src/debug/*'
-//                }
+                resources {
+                    //排除java/debug文件夹下的所有文件
+                    exclude 'src/main/debug/*'
+                }
             }
         }
     }

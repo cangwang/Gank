@@ -45,16 +45,16 @@ class AllNewsFragment : BaseFragment() {
     private var dataSave: ListDataSave? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        v = inflater!!.inflate(R.layout.news_all_fragment, container, false)
+        v = inflater.inflate(R.layout.news_all_fragment, container, false)
         setHasOptionsMenu(true)
         return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view!!, savedInstanceState)
-        dataSave = ListDataSave(context!!, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+        super.onViewCreated(view, savedInstanceState)
+        dataSave = ListDataSave(context!!, "gank", ListDataSave.DEBUG)
         pageTitles = dataSave!!.getDataList<String>("setting_data")
-        toolbar = view!!.findViewById(R.id.news_toolbar)
+        toolbar = view.findViewById(R.id.news_toolbar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         tabLayout = view.findViewById(R.id.news_gank_tab)
         mViewPager = view.findViewById(R.id.news_gank_view_pager)

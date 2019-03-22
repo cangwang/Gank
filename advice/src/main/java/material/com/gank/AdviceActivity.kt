@@ -40,7 +40,7 @@ class AdviceActivity : BaseActivity() {
 
             override fun onSplashViewDismiss(initiativeDismiss: Boolean) {
                 if (!hasClick) {
-                    startActivity(Intent("material.com.top.MAIN"));
+                    startActivity(Intent("material.com.top.MAIN"))
 //                    ARouter.getInstance().build("/gank_main/1").navigation()
                 }
                 finish()
@@ -55,7 +55,7 @@ class AdviceActivity : BaseActivity() {
         val sp = getSharedPreferences("gank", Context.MODE_PRIVATE)
         val firstEnter = sp.getBoolean("first_enter", false)
         if (!firstEnter) {
-            val dataSave = ListDataSave(this, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+            val dataSave = ListDataSave(this, "gank", ListDataSave.DEBUG)
             val setData = ArrayList<String>()
             setData.add("all")
             setData.add("Android")
@@ -64,7 +64,7 @@ class AdviceActivity : BaseActivity() {
             dataSave.setDataList("setting_data", setData)
             val editor = sp.edit()
             editor.putBoolean("first_enter", true)
-            editor.commit()
+            editor.apply()
         }
     }
 }

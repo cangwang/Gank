@@ -45,7 +45,7 @@ class SettingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_activity)
         initToolbar()
-        dataSave = ListDataSave(this, "gank", if (BuildConfig.BUILD_TYPE == "debug") ListDataSave.DEBUG else ListDataSave.PUBLISH)
+        dataSave = ListDataSave(this, "gank", ListDataSave.DEBUG)
         setData = dataSave!!.getDataList<String>("setting_data").toMutableList()
         setLayout = findViewById(R.id.settings_set_flow)
         allData = SettingConfig.unSetDats

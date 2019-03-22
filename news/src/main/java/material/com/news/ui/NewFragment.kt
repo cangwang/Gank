@@ -54,7 +54,7 @@ class NewFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mSwipeRefreshlayout = view!!.findViewById(R.id.news_swipe_refresh)
+        mSwipeRefreshlayout = view.findViewById(R.id.news_swipe_refresh)
         mSwipeRefreshlayout!!.setColorSchemeResources(R.color.common_pink_5, R.color.common_light_green_2, R.color.commen_blue_3)
         mSwipeRefreshlayout!!.setOnRefreshListener {
             page = 1
@@ -68,7 +68,7 @@ class NewFragment : BaseFragment() {
         mRecyclerView!!.adapter = adapter
         mRecyclerView!!.itemAnimator = DefaultItemAnimator()
         mRecyclerView!!.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 //                if (newState == RecyclerView.SCROLL_STATE_IDLE && layoutManager.findLastVisibleItemPosition()+1 == adapter.getItemCount()){
                 //                    page++;
@@ -87,7 +87,7 @@ class NewFragment : BaseFragment() {
                 }
             }
 
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 mSwipeRefreshlayout!!.isEnabled = layoutManager.findFirstCompletelyVisibleItemPosition() == 0
             }
